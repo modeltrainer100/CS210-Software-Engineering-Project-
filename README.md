@@ -55,15 +55,208 @@ By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision
 | Module | Description | Status | Technology |
 |:------:|:------------|:------:|:----------:|
 | 🌾 | **Crop Recommendation System**<br/>*Intelligent crop suggestions based on soil & climate* | ✅ Complete | XGBoost, ML |
-| 📈 | **Fertilizer Prediction**<br/>*Accurate harvest forecasting for better planning* | 🔄 In Progress | Machine Learning |
-| 🍃 | **Leaf Disease Detection**<br/>*Early disease identification using image recognition* | ⏳ Planned | CNN, CV |
+| 📈 | **Fertilizer Prediction**<br/>*Accurate harvest forecasting for better planning* | ✅ Complete  | Machine Learning |
+| 🍃 | **Leaf Disease Detection**<br/>*Early disease identification using image recognition* | ⏳ In Process | CNN, CV |
 | 🤖 | **AI Farmer Assistant**<br/>*Smart chatbot for real-time farming queries* | ⏳ Planned | NLP, LLM |
 
 </div>
 
 ---
+## 🛠️ Technology Stack
 
 <div align="center">
+
+### Programming & Frameworks
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+
+### Machine Learning & AI
+
+![Scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-337AB7?style=for-the-badge&logo=xgboost&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+
+### Development & Deployment
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+
+</div>
+
+---
+
+## 📈 Project Development Timeline
+
+<div align="center">
+
+```mermaid
+gantt
+    title DeepAgro Development Roadmap
+    dateFormat  YYYY-MM-DD
+    section Planning
+    Feasibility Study           :done,    des1, 2024-08-01, 30d
+    Requirements Analysis       :done,    des2, 2024-08-15, 20d
+    section Module 1
+    Crop Recommendation         :done,    mod1, 2024-09-01, 45d
+    Testing & Validation        :done,    test1, 2024-10-01, 15d
+    section Module 2
+    Fertilizer Prediction       :active,  mod2, 2024-10-15, 40d
+    section Module 3
+    Disease Detection           :done,    mod3, 2024-11-01, 30d
+    section Module 4
+    AI Chatbot                  :active,  mod4, 2024-11-15, 60d
+    section Deployment
+    Integration                :         int1, 2025-01-15, 30d
+    Final Deployment           :         dep1, 2025-02-15, 20d
+```
+
+</div>
+
+| Phase | Module | Status | Timeline |
+|:-----:|:-------|:------:|:--------:|
+| ✅ | Requirements & Feasibility Analysis | **Completed** | Aug 2024 |
+| ✅ | Module 1: Crop Recommendation System | **Completed** | Sep-Oct 2024 |
+| ✅ | Module 2: Fertilizer Prediction | **Completed** | Oct-Nov 2024 |
+| 🔄| Module 3: Leaf Disease Detection |  **In Progress**  Nov 2024 |
+| 🔄 | Module 4: AI Farmer Assistant | **In Development** | Nov 2024-Jan 2025 |
+| ⏳ | Integration & Final Deployment | Planned | Jan-Feb 2025 |
+
+---
+
+## 📚 Project Documentation
+
+<div align="center">
+
+| Document | Description | Link |
+|:---------|:------------|:----:|
+| 📋 Feasibility Report | Complete project feasibility analysis | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
+| 📊 Requirements Specification | Detailed system requirements | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
+
+</div>
+
+---
+
+## ⚙️ Software Engineering Methodology
+
+<div align="center">
+
+### 🔄 We Follow Agile Development
+
+<table>
+<tr>
+<td width="25%" align="center">
+
+#### 🎯
+**Sprint Planning**
+2-week sprints with clear goals
+
+</td>
+<td width="25%" align="center">
+
+#### 🔄
+**Iterative Development**
+Continuous improvement cycles
+
+</td>
+<td width="25%" align="center">
+
+#### 🤝
+**Team Collaboration**
+Daily standups & reviews
+
+</td>
+<td width="25%" align="center">
+
+#### 📊
+**Adaptive Planning**
+Flexibility based on feedback
+
+</td>
+</tr>
+</table>
+
+**Why Agile?**  
+✅ Iterative progress with regular deliverables  
+✅ Adaptability to changing requirements  
+✅ Continuous feedback and improvement  
+✅ Enhanced team collaboration  
+✅ Risk mitigation through incremental development
+
+</div>
+
+---
+
+## 👥 Meet Our Team
+
+<div align="center">
+
+### **🌟 Team DeepAgro 🌟**
+
+<table>
+<tr>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/ad24b1003.png" width="100px;" alt=""/><br />
+<sub><b>Aditya Upendra Gupta</b></sub><br />
+<sub>AD24B1003</sub><br />
+🎯 Project Lead
+</td>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/cs24b1001.png" width="100px;" alt=""/><br />
+<sub><b>Aaditya Awasthi</b></sub><br />
+<sub>CS24B1001</sub><br />
+💻 ML Engineer
+</td>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/cs24b1004.png" width="100px;" alt=""/><br />
+<sub><b>Aditya Raj</b></sub><br />
+<sub>CS24B1004</sub><br />
+🧠 AI Specialist
+</td>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/cs24b1057.png" width="100px;" alt=""/><br />
+<sub><b>Sudhavalli Murali</b></sub><br />
+<sub>CS24B1057</sub><br />
+📊 Data Analyst
+</td>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/ad24b1034.png" width="100px;" alt=""/><br />
+<sub><b>Kinshu Keshri</b></sub><br />
+<sub>AD24B1034</sub><br />
+🎨 UI/UX Designer
+</td>
+<td align="center" width="16.66%">
+<img src="https://github.com/identicons/cs24b1021.png" width="100px;" alt=""/><br />
+<sub><b>Rishita</b></sub><br />
+<sub>CS24B1021</sub><br />
+🔧 Backend Developer
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+## 🎓 Academic Information
+
+<div align="center">
+
+**Course:** CS210 - Software Engineering  
+**Institution:** Indian Institute of Information Technology, Raichur  
+**Mentor:** Dr. Priodyuti Pradhan  
+**Academic Year:** 2024-2025
+
+</div>
+
+---
+
+
 
 ## 🌾 Module 1: Crop Recommendation System
 
@@ -227,274 +420,6 @@ Our system includes **smart validation** to detect unusual values and alert user
 ║  💡 Recommendation: Rice is highly suitable for your soil  ║
 ╚════════════════════════════════════════════════════════════╝
 ```
-
----
-
-## 🛠️ Technology Stack
-
-<div align="center">
-
-### Programming & Frameworks
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-
-### Machine Learning & AI
-
-![Scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-337AB7?style=for-the-badge&logo=xgboost&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
-
-### Development & Deployment
-
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-
-</div>
-
----
-
-## 📈 Project Development Timeline
-
-<div align="center">
-
-```mermaid
-gantt
-    title DeepAgro Development Roadmap
-    dateFormat  YYYY-MM-DD
-    section Planning
-    Feasibility Study           :done,    des1, 2024-08-01, 30d
-    Requirements Analysis       :done,    des2, 2024-08-15, 20d
-    section Module 1
-    Crop Recommendation         :done,    mod1, 2024-09-01, 45d
-    Testing & Validation        :done,    test1, 2024-10-01, 15d
-    section Module 2
-    Fertilizer Prediction       :active,  mod2, 2024-10-15, 40d
-    section Module 3
-    Disease Detection           :done,    mod3, 2024-11-01, 30d
-    section Module 4
-    AI Chatbot                  :active,  mod4, 2024-11-15, 60d
-    section Deployment
-    Integration                :         int1, 2025-01-15, 30d
-    Final Deployment           :         dep1, 2025-02-15, 20d
-```
-
-</div>
-
-| Phase | Module | Status | Timeline |
-|:-----:|:-------|:------:|:--------:|
-| ✅ | Requirements & Feasibility Analysis | **Completed** | Aug 2024 |
-| ✅ | Module 1: Crop Recommendation System | **Completed** | Sep-Oct 2024 |
-| 🔄 | Module 2: Fertilizer Prediction | **In Progress** | Oct-Nov 2024 |
-| ✅ | Module 3: Leaf Disease Detection | **Completed** | Nov 2024 |
-| 🔄 | Module 4: AI Farmer Assistant | **In Development** | Nov 2024-Jan 2025 |
-| ⏳ | Integration & Final Deployment | Planned | Jan-Feb 2025 |
-
----
-
-## 📚 Project Documentation
-
-<div align="center">
-
-| Document | Description | Link |
-|:---------|:------------|:----:|
-| 📋 Feasibility Report | Complete project feasibility analysis | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
-| 📊 Requirements Specification | Detailed system requirements | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
-| 🎨 Design Documents | System architecture & design | Coming Soon |
-| 📖 User Manual | Complete usage guide | Coming Soon |
-
-</div>
-
----
-
-## ⚙️ Software Engineering Methodology
-
-<div align="center">
-
-### 🔄 We Follow Agile Development
-
-<table>
-<tr>
-<td width="25%" align="center">
-
-#### 🎯
-**Sprint Planning**
-2-week sprints with clear goals
-
-</td>
-<td width="25%" align="center">
-
-#### 🔄
-**Iterative Development**
-Continuous improvement cycles
-
-</td>
-<td width="25%" align="center">
-
-#### 🤝
-**Team Collaboration**
-Daily standups & reviews
-
-</td>
-<td width="25%" align="center">
-
-#### 📊
-**Adaptive Planning**
-Flexibility based on feedback
-
-</td>
-</tr>
-</table>
-
-**Why Agile?**  
-✅ Iterative progress with regular deliverables  
-✅ Adaptability to changing requirements  
-✅ Continuous feedback and improvement  
-✅ Enhanced team collaboration  
-✅ Risk mitigation through incremental development
-
-</div>
-
----
-
-## 👥 Meet Our Team
-
-<div align="center">
-
-### **🌟 Team DeepAgro 🌟**
-
-<table>
-<tr>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/ad24b1003.png" width="100px;" alt=""/><br />
-<sub><b>Aditya Upendra Gupta</b></sub><br />
-<sub>AD24B1003</sub><br />
-🎯 Project Lead
-</td>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/cs24b1001.png" width="100px;" alt=""/><br />
-<sub><b>Aaditya Awasthi</b></sub><br />
-<sub>CS24B1001</sub><br />
-💻 ML Engineer
-</td>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/cs24b1004.png" width="100px;" alt=""/><br />
-<sub><b>Aditya Raj</b></sub><br />
-<sub>CS24B1004</sub><br />
-🧠 AI Specialist
-</td>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/cs24b1057.png" width="100px;" alt=""/><br />
-<sub><b>Sudhavalli Murali</b></sub><br />
-<sub>CS24B1057</sub><br />
-📊 Data Analyst
-</td>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/ad24b1034.png" width="100px;" alt=""/><br />
-<sub><b>Kinshu Keshri</b></sub><br />
-<sub>AD24B1034</sub><br />
-🎨 UI/UX Designer
-</td>
-<td align="center" width="16.66%">
-<img src="https://github.com/identicons/cs24b1021.png" width="100px;" alt=""/><br />
-<sub><b>Rishita</b></sub><br />
-<sub>CS24B1021</sub><br />
-🔧 Backend Developer
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-## 🎓 Academic Information
-
-<div align="center">
-
-**Course:** CS210 - Software Engineering  
-**Institution:** Indian Institute of Information Technology, Raichur  
-**Mentor:** Dr. Priodyuti Pradhan  
-**Academic Year:** 2024-2025
-
-</div>
-
----
-
-## 📞 Contact & Support
-
-<div align="center">
-
-**Have questions or suggestions?**
-
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/yourusername/deepagro/issues)
-[![Email](https://img.shields.io/badge/Email-Contact%20Us-blue?style=for-the-badge&logo=gmail)](mailto:deepagro@iiitr.ac.in)
-[![Documentation](https://img.shields.io/badge/Docs-Read%20More-green?style=for-the-badge&logo=readthedocs)](https://github.com/yourusername/deepagro/wiki)
-
-For queries, suggestions, or collaboration opportunities:
-- 📧 Open an issue on GitHub
-- 💬 Contact any team member
-- 📝 Check our documentation
-
-</div>
-
----
-
-## 🌟 Project Impact
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="25%">
-
-### 🎯
-**Accuracy**
-
-95%+
-<br/>Disease Detection Rate
-
-</td>
-<td align="center" width="25%">
-
-### 🌾
-**Crops**
-
-38+
-<br/>Disease Classes
-
-</td>
-<td align="center" width="25%">
-
-### 📊
-**Images**
-
-87,000+
-<br/>Training Dataset
-
-</td>
-<td align="center" width="25%">
-
-### 🌍
-**Languages**
-
-10+
-<br/>Multilingual Support
-
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-<div align="center">
 
 ## 🧪 Module 2: Fertilizer Prediction System
 
@@ -879,6 +804,77 @@ We extend our gratitude to:
 <br/>
 
 ---
+## 📞 Contact & Support
+
+<div align="center">
+
+**Have questions or suggestions?**
+
+[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/yourusername/deepagro/issues)
+[![Email](https://img.shields.io/badge/Email-Contact%20Us-blue?style=for-the-badge&logo=gmail)](mailto:deepagro@iiitr.ac.in)
+[![Documentation](https://img.shields.io/badge/Docs-Read%20More-green?style=for-the-badge&logo=readthedocs)](https://github.com/yourusername/deepagro/wiki)
+
+For queries, suggestions, or collaboration opportunities:
+- 📧 Open an issue on GitHub
+- 💬 Contact any team member
+- 📝 Check our documentation
+
+</div>
+
+---
+
+## 🌟 Project Impact
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="25%">
+
+### 🎯
+**Accuracy**
+
+95%+
+<br/>Disease Detection Rate
+
+</td>
+<td align="center" width="25%">
+
+### 🌾
+**Crops**
+
+38+
+<br/>Disease Classes
+
+</td>
+<td align="center" width="25%">
+
+### 📊
+**Images**
+
+87,000+
+<br/>Training Dataset
+
+</td>
+<td align="center" width="25%">
+
+### 🌍
+**Languages**
+
+10+
+<br/>Multilingual Support
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+<div align="center">
 
 *© 2025 Team DeepAgro | IIIT Raichur | All Rights Reserved*
 

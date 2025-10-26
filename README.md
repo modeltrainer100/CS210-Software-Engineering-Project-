@@ -55,7 +55,7 @@ By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision
 | Module | Description | Status | Technology |
 |:------:|:------------|:------:|:----------:|
 | 🌾 | **Crop Recommendation System**<br/>*Intelligent crop suggestions based on soil & climate* | ✅ Complete | XGBoost, ML |
-| 📈 | **Yield Prediction**<br/>*Accurate harvest forecasting for better planning* | 🔄 In Progress | Deep Learning |
+| 📈 | **Fertlizer Prediction**<br/>*Accurate harvest Fertlizer for better planning* | 🔄 In Progress | Deep Learning |
 | 🍃 | **Leaf Disease Detection**<br/>*Early disease identification using image recognition* | ⏳ Planned | CNN, CV |
 | 🤖 | **AI Farmer Assistant**<br/>*Smart chatbot for real-time farming queries* | ⏳ Planned | NLP, LLM |
 

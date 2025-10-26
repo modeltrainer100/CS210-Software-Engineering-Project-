@@ -800,11 +800,7 @@ Teaches best farming practices and modern techniques
 </table>
 
 ### 🤖 Features
-
-✅ **Voice Input Support** - Speak your query in your language  
-✅ **Text-to-Speech** - Hear responses in your preferred language  
 ✅ **Context Awareness** - Remembers conversation history  
-✅ **Image Understanding** - Can analyze uploaded images  
 ✅ **Location-Based** - Provides region-specific advice  
 ✅ **Weather Integration** - Gives weather-aware suggestions  
 ✅ **Market Prices** - Shares current crop prices  
@@ -843,20 +839,6 @@ Bot: 🌾 The best time to plant tomatoes is during the cooler
      మీ నేల పరీక్ష ఫలితాల ఆధారంగా ఖచ్చితమైన సలహా కోసం 
      'Fertilizer Prediction' ఫీచర్ ఉపయోగించండి.
 ```
-
-### 🛠️ Technology Stack
-
-- **NLP Engine:** Transformers, BERT
-- **Language Models:** mBERT (Multilingual BERT)
-- **Translation:** Google Translate API
-- **Speech Recognition:** Whisper AI
-- **Text-to-Speech:** gTTS, Coqui TTS
-- **Backend:** FastAPI, Python
-- **Database:** MongoDB (conversation history)
-- **Deployment:** Docker, Cloud Services
-
----
-
 ## 🙏 Acknowledgments
 
 <div align="center">
@@ -873,18 +855,6 @@ We extend our gratitude to:
 </div>
 
 ---
-
-## 📜 License
-
-<div align="center">
-
-This project is licensed under the **MIT License**  
-See [LICENSE](LICENSE) file for details
-
-</div>
-
----
-
 <div align="center">
 
 ## 🌾 Together, Let's Transform Agriculture 🌾
@@ -893,13 +863,6 @@ See [LICENSE](LICENSE) file for details
 
 **Made with ❤️ and 🧠 by Team DeepAgro**
 
-<br/>
-
-[![Star this repo](https://img.shields.io/github/stars/yourusername/deepagro?style=social)](https://github.com/yourusername/deepagro)
-[![Fork this repo](https://img.shields.io/github/forks/yourusername/deepagro?style=social)](https://github.com/yourusername/deepagro/fork)
-[![Follow us](https://img.shields.io/github/followers/yourusername?style=social)](https://github.com/yourusername)
-
-<br/>
 
 ### *"Empowering farmers with AI, one recommendation at a time"*
 

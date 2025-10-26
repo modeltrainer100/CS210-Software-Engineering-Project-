@@ -62,174 +62,6 @@ By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision
 </div>
 
 ---
-
-<div align="center">
-
-## 🌾 Module 1: Crop Recommendation System
-
-<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Accuracy-99.3%25-brightgreen?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Model-XGBoost-blue?style=for-the-badge" />
-
-</div>
-
-### 📖 Overview
-
-Our **Crop Recommendation System** is an intelligent ML-powered solution that analyzes soil nutrients, environmental conditions, and climate data to suggest the **most suitable crops** for cultivation. The system doesn't just recommend one crop—it provides the **top 3 best options**, giving farmers flexibility in their decision-making process.
-
-<details>
-<summary><b>🔍 Click to see Key Features</b></summary>
-
-<br/>
-
-- ✅ **Multi-Crop Recommendations** - Get top 3 crop suggestions with confidence scores
-- 📊 **Comprehensive Analysis** - Detailed summary of your soil and environmental parameters
-- ⚠️ **Smart Validation** - Intelligent warnings for unusual or outlier input values
-- 🎯 **High Accuracy** - 99.3% accuracy using advanced XGBoost algorithm
-- 🌍 **Real-World Data** - Trained on authentic agricultural datasets from Kaggle
-- ⚡ **Fast Predictions** - Get results in milliseconds
-
-</details>
-
----
-
-### 📁 Dataset Information
-
-<div align="center">
-
-**Source:** [Kaggle Crop Recommendation Dataset](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset)  
-**Size:** 2,200+ samples | **Features:** 7 parameters | **Crops:** 22 varieties
-
-</div>
-
-### 📊 Input Features
-
-<div align="center">
-
-| 🔬 Feature | 📝 Description | 📏 Unit | 📈 Typical Range |
-|:----------:|:---------------|:-------:|:----------------:|
-| **N** | Nitrogen content in soil | kg/ha | 0 - 140 |
-| **P** | Phosphorus content in soil | kg/ha | 5 - 145 |
-| **K** | Potassium content in soil | kg/ha | 5 - 205 |
-| **🌡️ Temperature** | Average atmospheric temperature | °C | 8 - 44 |
-| **💧 Humidity** | Relative humidity percentage | % | 14 - 100 |
-| **⚗️ pH** | Soil pH value (acidity/alkalinity) | - | 3.5 - 9.9 |
-| **🌧️ Rainfall** | Annual rainfall | mm | 20 - 300 |
-
-</div>
-
----
-
-### 🤖 Machine Learning Models Comparison
-
-We rigorously tested **5 different ML algorithms** to ensure the best performance:
-
-<div align="center">
-
-| 🏆 Rank | Model | Accuracy | Performance | Status |
-|:-------:|:------|:--------:|:-----------:|:------:|
-| **#1** | **XGBoost** | **99.3%** | ⭐⭐⭐⭐⭐ | ✅ **SELECTED** |
-| #2 | Decision Tree | 98.1% | ⭐⭐⭐⭐ | - |
-| #3 | Support Vector Machine | 97.8% | ⭐⭐⭐⭐ | - |
-| #4 | K-Nearest Neighbors | 97.3% | ⭐⭐⭐ | - |
-| #5 | Logistic Regression | 95.2% | ⭐⭐⭐ | - |
-
-</div>
-
-> 💡 **Why XGBoost?**  
-> XGBoost (Extreme Gradient Boosting) demonstrated **superior performance** with 99.3% accuracy, excellent handling of non-linear relationships, and robust performance on agricultural data. Its ensemble learning approach makes it ideal for complex multi-class classification tasks.
-
----
-
-### ✨ System Capabilities
-
-<table>
-<tr>
-<td width="33%" align="center">
-
-#### 🏆 Top 3 Recommendations
-
-Get the **best 3 crop options** ranked by suitability score
-
-Provides flexibility and alternatives for farmers
-
-</td>
-<td width="33%" align="center">
-
-#### 📋 Input Summary
-
-Comprehensive analysis of all input parameters
-
-Helps understand farmland conditions
-
-</td>
-<td width="33%" align="center">
-
-#### ⚠️ Smart Warnings
-
-Intelligent outlier detection
-
-Validates data accuracy automatically
-
-</td>
-</tr>
-</table>
-
----
-
-### 🚨 Intelligent Warning System
-
-Our system includes **smart validation** to detect unusual values and alert users:
-
-<div align="center">
-
-| ⚠️ Warning Type | Condition | Alert Message |
-|:----------------|:----------|:--------------|
-| 🔴 **Critical pH** | pH < 3.5 or pH > 10 | "Warning! pH value is extremely unusual. Please verify your soil test." |
-| 🔴 **Invalid Values** | Any negative value | "Invalid input detected. Please enter positive values for nutrients." |
-| 🟡 **Temperature** | < 5°C or > 50°C | "Temperature value seems unusual for agricultural land." |
-| 🟡 **Humidity** | < 0% or > 100% | "Humidity percentage should be between 0-100%." |
-| 🟡 **Extreme Nutrients** | Values beyond typical range | "Nutrient levels are unusually high/low. Please verify soil test results." |
-
-</div>
-
----
-
-### 🎯 Sample Output
-
-```
-╔════════════════════════════════════════════════════════════╗
-║          🌾 CROP RECOMMENDATION RESULTS 🌾                 ║
-╚════════════════════════════════════════════════════════════╝
-
-🏆 Top 3 Recommended Crops:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   1. 🌾 Rice                    Confidence: 94% ⭐⭐⭐⭐⭐
-   2. 🌿 Cotton                  Confidence: 88% ⭐⭐⭐⭐
-   3. 🌽 Maize                   Confidence: 82% ⭐⭐⭐⭐
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📊 Your Input Summary:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🔬 Nitrogen (N):              85 kg/ha
-   🔬 Phosphorus (P):            58 kg/ha
-   🔬 Potassium (K):             41 kg/ha
-   🌡️  Temperature:              28°C
-   💧 Humidity:                  75%
-   ⚗️  pH Level:                  6.5 (Neutral)
-   🌧️  Rainfall:                 180 mm
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ All parameters are within normal range!
-🌱 Your soil conditions are optimal for cultivation.
-
-╔════════════════════════════════════════════════════════════╗
-║  💡 Recommendation: Rice is highly suitable for your soil  ║
-╚════════════════════════════════════════════════════════════╝
-```
-
----
-
 ## 🛠️ Technology Stack
 
 <div align="center">
@@ -495,6 +327,171 @@ For queries, suggestions, or collaboration opportunities:
 ---
 
 <div align="center">
+
+<div align="center">
+
+## 🌾 Module 1: Crop Recommendation System
+
+<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Accuracy-99.3%25-brightgreen?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Model-XGBoost-blue?style=for-the-badge" />
+
+</div>
+
+### 📖 Overview
+
+Our **Crop Recommendation System** is an intelligent ML-powered solution that analyzes soil nutrients, environmental conditions, and climate data to suggest the **most suitable crops** for cultivation. The system doesn't just recommend one crop—it provides the **top 3 best options**, giving farmers flexibility in their decision-making process.
+
+<details>
+<summary><b>🔍 Click to see Key Features</b></summary>
+
+<br/>
+
+- ✅ **Multi-Crop Recommendations** - Get top 3 crop suggestions with confidence scores
+- 📊 **Comprehensive Analysis** - Detailed summary of your soil and environmental parameters
+- ⚠️ **Smart Validation** - Intelligent warnings for unusual or outlier input values
+- 🎯 **High Accuracy** - 99.3% accuracy using advanced XGBoost algorithm
+- 🌍 **Real-World Data** - Trained on authentic agricultural datasets from Kaggle
+- ⚡ **Fast Predictions** - Get results in milliseconds
+
+</details>
+
+---
+
+### 📁 Dataset Information
+
+<div align="center">
+
+**Source:** [Kaggle Crop Recommendation Dataset](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset)  
+**Size:** 2,200+ samples | **Features:** 7 parameters | **Crops:** 22 varieties
+
+</div>
+
+### 📊 Input Features
+
+<div align="center">
+
+| 🔬 Feature | 📝 Description | 📏 Unit | 📈 Typical Range |
+|:----------:|:---------------|:-------:|:----------------:|
+| **N** | Nitrogen content in soil | kg/ha | 0 - 140 |
+| **P** | Phosphorus content in soil | kg/ha | 5 - 145 |
+| **K** | Potassium content in soil | kg/ha | 5 - 205 |
+| **🌡️ Temperature** | Average atmospheric temperature | °C | 8 - 44 |
+| **💧 Humidity** | Relative humidity percentage | % | 14 - 100 |
+| **⚗️ pH** | Soil pH value (acidity/alkalinity) | - | 3.5 - 9.9 |
+| **🌧️ Rainfall** | Annual rainfall | mm | 20 - 300 |
+
+</div>
+
+---
+
+### 🤖 Machine Learning Models Comparison
+
+We rigorously tested **5 different ML algorithms** to ensure the best performance:
+
+<div align="center">
+
+| 🏆 Rank | Model | Accuracy | Performance | Status |
+|:-------:|:------|:--------:|:-----------:|:------:|
+| **#1** | **XGBoost** | **99.3%** | ⭐⭐⭐⭐⭐ | ✅ **SELECTED** |
+| #2 | Decision Tree | 98.1% | ⭐⭐⭐⭐ | - |
+| #3 | Support Vector Machine | 97.8% | ⭐⭐⭐⭐ | - |
+| #4 | K-Nearest Neighbors | 97.3% | ⭐⭐⭐ | - |
+| #5 | Logistic Regression | 95.2% | ⭐⭐⭐ | - |
+
+</div>
+
+> 💡 **Why XGBoost?**  
+> XGBoost (Extreme Gradient Boosting) demonstrated **superior performance** with 99.3% accuracy, excellent handling of non-linear relationships, and robust performance on agricultural data. Its ensemble learning approach makes it ideal for complex multi-class classification tasks.
+
+---
+
+### ✨ System Capabilities
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+#### 🏆 Top 3 Recommendations
+
+Get the **best 3 crop options** ranked by suitability score
+
+Provides flexibility and alternatives for farmers
+
+</td>
+<td width="33%" align="center">
+
+#### 📋 Input Summary
+
+Comprehensive analysis of all input parameters
+
+Helps understand farmland conditions
+
+</td>
+<td width="33%" align="center">
+
+#### ⚠️ Smart Warnings
+
+Intelligent outlier detection
+
+Validates data accuracy automatically
+
+</td>
+</tr>
+</table>
+
+---
+
+### 🚨 Intelligent Warning System
+
+Our system includes **smart validation** to detect unusual values and alert users:
+
+<div align="center">
+
+| ⚠️ Warning Type | Condition | Alert Message |
+|:----------------|:----------|:--------------|
+| 🔴 **Critical pH** | pH < 3.5 or pH > 10 | "Warning! pH value is extremely unusual. Please verify your soil test." |
+| 🔴 **Invalid Values** | Any negative value | "Invalid input detected. Please enter positive values for nutrients." |
+| 🟡 **Temperature** | < 5°C or > 50°C | "Temperature value seems unusual for agricultural land." |
+| 🟡 **Humidity** | < 0% or > 100% | "Humidity percentage should be between 0-100%." |
+| 🟡 **Extreme Nutrients** | Values beyond typical range | "Nutrient levels are unusually high/low. Please verify soil test results." |
+
+</div>
+
+---
+
+### 🎯 Sample Output
+
+```
+╔════════════════════════════════════════════════════════════╗
+║          🌾 CROP RECOMMENDATION RESULTS 🌾                 ║
+╚════════════════════════════════════════════════════════════╝
+
+🏆 Top 3 Recommended Crops:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. 🌾 Rice                    Confidence: 94% ⭐⭐⭐⭐⭐
+   2. 🌿 Cotton                  Confidence: 88% ⭐⭐⭐⭐
+   3. 🌽 Maize                   Confidence: 82% ⭐⭐⭐⭐
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 Your Input Summary:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🔬 Nitrogen (N):              85 kg/ha
+   🔬 Phosphorus (P):            58 kg/ha
+   🔬 Potassium (K):             41 kg/ha
+   🌡️  Temperature:              28°C
+   💧 Humidity:                  75%
+   ⚗️  pH Level:                  6.5 (Neutral)
+   🌧️  Rainfall:                 180 mm
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ All parameters are within normal range!
+🌱 Your soil conditions are optimal for cultivation.
+
+╔════════════════════════════════════════════════════════════╗
+║  💡 Recommendation: Rice is highly suitable for your soil  ║
+╚════════════════════════════════════════════════════════════╝
+```
 
 ## 🧪 Module 2: Fertilizer Prediction System
 

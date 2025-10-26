@@ -421,7 +421,7 @@ Our system includes **smart validation** to detect unusual values and alert user
 ╚════════════════════════════════════════════════════════════╝
 ```
 
-<div align:'center'>
+<div align='center'>
     
 ## 🧪 Module 2: Fertilizer Prediction System
 

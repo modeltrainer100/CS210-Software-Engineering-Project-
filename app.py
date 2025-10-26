@@ -1855,7 +1855,7 @@ def load_fertilizer_data():
     n_samples = 800
     
     data = {
-        'Temperature': np.random.uniform(10, 45, n_samples),
+        'Temparature': np.random.uniform(10, 45, n_samples),
         'Humidity': np.random.uniform(20, 95, n_samples),
         'Moisture': np.random.uniform(0, 100, n_samples),
         'Soil_Type': np.random.choice(['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], n_samples),
@@ -1933,38 +1933,79 @@ def train_crop_model():
         pipeline_fallback.fit(X, y_encoded)
         
         return pipeline_fallback, le_fallback
+    
+
 @st.cache_resource
 def train_fertilizer_model():
-    """Train fertilizer recommendation model"""
-    df = load_fertilizer_data()
+    """
+    Loads the pre-trained Pipeline (randpipe.pkl) and creates a LabelEncoder 
+    for fertilizer name decoding (as the encoder was not saved in the provided notebook).
+    """
+    pipeline_path = 'randpipe.pkl'
     
-    le_soil = LabelEncoder()
-    le_crop = LabelEncoder()
+    # Define fallback classes for the LabelEncoder using the sample data
+    df_data = load_fertilizer_data()
     
-    df['Soil_Encoded'] = le_soil.fit_transform(df['Soil_Type'])
-    df['Crop_Encoded'] = le_crop.fit_transform(df['Crop_Type'])
-    
-    X = df[['Temperature', 'Humidity', 'Moisture', 'Soil_Encoded', 
-            'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
-    y = df['Fertilizer_Name']
-    
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X, y)
-    
-    return model, le_soil, le_crop
+    # 1. Load the Pipeline (randpipe.pkl)
+    try:
+        with open(pipeline_path, 'rb') as f:
+            model_pipeline = pickle.load(f)
+        st.success("Pre-trained Fertilizer Pipeline Loaded Successfully! 🧪")
 
-def predict_disease_from_image(image):
-    """Mock CNN disease prediction"""
-    diseases = [
-        "Healthy", "Apple Scab", "Black Rot", "Cedar Apple Rust",
-        "Bacterial Blight", "Early Blight", "Late Blight", "Leaf Mold",
-        "Septoria Leaf Spot", "Target Spot", "Mosaic Virus"
-    ]
+        # 2. Recreate LabelEncoder using the full set of labels from the sample data
+        # This assumes the sample data contains all possible output classes.
+        le_fertilizer = LabelEncoder()
+        # We need to fit the encoder on the entire original label set to ensure correct decoding
+        le_fertilizer.fit(df_data['Fertilizer_Name']) 
+        
+        # NOTE: The other two encoders (le_soil and le_crop) are technically not needed 
+        # in the calling function because the pipeline handles the encoding. 
+        # We return a placeholder for le_soil and le_crop as per the function signature.
+        le_soil_placeholder = LabelEncoder().fit(df_data['Soil_Type'])
+        le_crop_placeholder = LabelEncoder().fit(df_data['Crop_Type'])
+        
+        return model_pipeline, le_soil_placeholder, le_crop_placeholder, le_fertilizer
+
+    except FileNotFoundError:
+        st.error(f"Error: Required pipeline file ('{pipeline_path}') not found. Falling back to mock model training.")
+        
+        # --- Fallback: Train and return a mock model (original app logic) ---
+        le_soil_fallback = LabelEncoder()
+        le_crop_fallback = LabelEncoder()
+        le_fert_fallback = LabelEncoder()
+        
+        df_data['Soil_Encoded'] = le_soil_fallback.fit_transform(df_data['Soil_Type'])
+        df_data['Crop_Encoded'] = le_crop_fallback.fit_transform(df_data['Crop_Type'])
+        y_encoded = le_fert_fallback.fit_transform(df_data['Fertilizer_Name'])
+        
+        X = df_data[['Temparature', 'Humidity', 'Moisture', 'Soil_Encoded', 
+                     'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
+        
+        model_fallback = RandomForestClassifier(n_estimators=100, random_state=42)
+        model_fallback.fit(X, y_encoded)
+        
+        st.warning("Using mock RandomForestClassifier for demo purposes.")
+        return model_fallback, le_soil_fallback, le_crop_fallback, le_fert_fallback
     
-    predicted_disease = np.random.choice(diseases)
-    confidence = np.random.uniform(0.75, 0.98)
-    
-    return predicted_disease, confidence
+    except Exception as e:
+        st.error(f"Error loading model component '{pipeline_path}': {e}. Falling back to mock training.")
+        
+        # --- Fallback: Train and return a mock model (original app logic) ---
+        le_soil_fallback = LabelEncoder()
+        le_crop_fallback = LabelEncoder()
+        le_fert_fallback = LabelEncoder()
+        
+        df_data['Soil_Encoded'] = le_soil_fallback.fit_transform(df_data['Soil_Type'])
+        df_data['Crop_Encoded'] = le_crop_fallback.fit_transform(df_data['Crop_Type'])
+        y_encoded = le_fert_fallback.fit_transform(df_data['Fertilizer_Name'])
+        
+        X = df_data[['Temparature', 'Humidity', 'Moisture', 'Soil_Encoded', 
+                     'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
+        
+        model_fallback = RandomForestClassifier(n_estimators=100, random_state=42)
+        model_fallback.fit(X, y_encoded)
+        
+        return model_fallback, le_soil_fallback, le_crop_fallback, le_fert_fallback
 
 # Main App
 def main():
@@ -2761,7 +2802,7 @@ def show_crop_prediction():
         """, unsafe_allow_html=True)
     
 def show_fertilizer_recommendation():
-    """Display fertilizer recommendation page"""
+    """Display fertilizer recommendation page - MATCHING TRAINING PIPELINE"""
     t = translations[st.session_state.lang]
 
     st.markdown(f"# 🧪 {t['fertilizer_recommendation']['main_title']}")
@@ -2773,64 +2814,88 @@ def show_fertilizer_recommendation():
     with col1:
         st.markdown(f"### {t['fertilizer_recommendation']['section_info']}")
         
-        # Use translated labels for selectboxes
-        crop_type = st.selectbox(t['fertilizer_recommendation']['crop_type_label'], 
+        crop_type = st.selectbox(
+            t['fertilizer_recommendation']['crop_type_label'], 
             ['Maize', 'Sugarcane', 'Cotton', 'Tobacco', 'Paddy', 
-             'Barley', 'Wheat', 'Millets', 'Oil seeds', 'Pulses', 'Ground Nuts'], key="crop_type")
-        soil_type = st.selectbox(t['fertilizer_recommendation']['soil_type_label'], 
-            ['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], key="soil_type")
+             'Barley', 'Wheat', 'Millets', 'Oil seeds', 'Pulses', 'Ground Nuts'], 
+            key="crop_type"
+        )
+        soil_type = st.selectbox(
+            t['fertilizer_recommendation']['soil_type_label'], 
+            ['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], 
+            key="soil_type"
+        )
         
         st.markdown(f"### {t['fertilizer_recommendation']['section_env']}")
-        # Use translated labels for sliders
         temp = st.slider(t['fertilizer_recommendation']['temp_label'], 10.0, 45.0, 25.0, key="fert_temp")
         humidity_fert = st.slider(t['fertilizer_recommendation']['hum_label'], 20.0, 95.0, 50.0, key="fert_humidity")
         moisture = st.slider(t['fertilizer_recommendation']['moisture_label'], 0.0, 100.0, 50.0, key="fert_moisture")
         
     with col2:
         st.markdown(f"### {t['fertilizer_recommendation']['section_nutrients']}")
-        # Use translated labels for sliders
         nitrogen_fert = st.slider(t['fertilizer_recommendation']['nitrogen_label'], 0, 50, 25, key="fert_nitrogen")
         phosphorus_fert = st.slider(t['fertilizer_recommendation']['phosphorus_label'], 0, 50, 25, key="fert_phosphorus")
         potassium_fert = st.slider(t['fertilizer_recommendation']['potassium_label'], 0, 50, 25, key="fert_potassium")
         
-        # --- Nutrient Status Metrics ---
+        # Nutrient Status Metrics
         st.markdown(f"### {t['fertilizer_recommendation']['nutrient_status_header']}")
         col2_1, col2_2, col2_3 = st.columns(3)
         
         def get_nutrient_status(value):
             if value < 15:
-                return t['fertilizer_recommendation']['low'] # Use translated string
+                return t['fertilizer_recommendation']['low']
             elif value < 35:
-                return t['fertilizer_recommendation']['medium'] # Use translated string
+                return t['fertilizer_recommendation']['medium']
             else:
-                return t['fertilizer_recommendation']['high'] # Use translated string
+                return t['fertilizer_recommendation']['high']
         
         with col2_1:
-            # Use translated labels for metrics (display is f"{value}", status is translated)
-            st.metric(t['fertilizer_recommendation']['nitrogen_label'], f"{nitrogen_fert}", get_nutrient_status(nitrogen_fert).split(' ')[0]) 
+            status = get_nutrient_status(nitrogen_fert)
+            st.metric(t['fertilizer_recommendation']['nitrogen_label'], f"{nitrogen_fert}", status.split(' ')[-1]) 
         with col2_2:
-            st.metric(t['fertilizer_recommendation']['phosphorus_label'], f"{phosphorus_fert}", get_nutrient_status(phosphorus_fert).split(' ')[0])
+            status = get_nutrient_status(phosphorus_fert)
+            st.metric(t['fertilizer_recommendation']['phosphorus_label'], f"{phosphorus_fert}", status.split(' ')[-1])
         with col2_3:
-            st.metric(t['fertilizer_recommendation']['potassium_label'], f"{potassium_fert}", get_nutrient_status(potassium_fert).split(' ')[0])
+            status = get_nutrient_status(potassium_fert)
+            st.metric(t['fertilizer_recommendation']['potassium_label'], f"{potassium_fert}", status.split(' ')[-1])
             
-    # --- Prediction Button ---
+    # Prediction Button
     if st.button(t['fertilizer_recommendation']['predict_button'], type="primary", key="get_fert_rec"):
-        model, le_soil, le_crop = train_fertilizer_model()
         
         try:
-            # Encoding inputs
-            soil_encoded = le_soil.transform([soil_type])[0]
-            crop_encoded = le_crop.transform([crop_type])[0]
+            # Load the pipeline (which contains the preprocessor)
+            pipeline_path = 'randpipe.pkl'
+            with open(pipeline_path, 'rb') as f:
+                randpipe = pickle.load(f)
             
-            input_data = np.array([[temp, humidity_fert, moisture, soil_encoded, 
-                                     crop_encoded, nitrogen_fert, potassium_fert, phosphorus_fert]])
+            # Load the fertilizer label encoder
+            encoder_path = 'fert_label_encoder.pkl'
+            with open(encoder_path, 'rb') as f:
+                le_fertilizer = pickle.load(f)
             
-            # Predict and calculate confidence
-            prediction = model.predict(input_data)[0]
-            probabilities = model.predict_proba(input_data)[0]
-            confidence = max(probabilities) * 100
+            # ✅ Create input DataFrame with EXACT column names and order from training
+            # This is CRITICAL - must match training data exactly
+            input_df = pd.DataFrame({
+                'Temparature': [float(temp)],           # Note: Typo "Temparature" is intentional
+                'Humidity': [float(humidity_fert)],
+                'Moisture': [float(moisture)],
+                'Soil Type': [soil_type],               # OneHotEncoder will handle this
+                'Crop Type': [crop_type],               # OneHotEncoder will handle this
+                'Nitrogen': [int(nitrogen_fert)],
+                'Potassium': [int(potassium_fert)],
+                'Phosphorous': [int(phosphorus_fert)]   # Note: American spelling
+            })
             
-            # --- Results Display ---
+            # ✅ The pipeline preprocessor (with OneHotEncoder) will handle categorical encoding
+            # Make prediction - let the pipeline's preprocessor do the encoding
+            prediction_encoded = randpipe.predict(input_df)[0]
+            probabilities = randpipe.predict_proba(input_df)[0]
+            
+            # Decode the prediction using the fertilizer label encoder
+            prediction = le_fertilizer.inverse_transform([int(prediction_encoded)])[0]
+            confidence = probabilities[int(prediction_encoded)] * 100
+            
+            # Display Results
             st.markdown(f"""
             <div class="prediction-result">
                 🎯 {t['fertilizer_recommendation']['result_header']} <strong>{prediction}</strong><br>
@@ -2838,19 +2903,48 @@ def show_fertilizer_recommendation():
             </div>
             """, unsafe_allow_html=True)
             
-            # Formatted list of tips using translated strings
-            info_tips_lines = t['fertilizer_recommendation']['result_info_tips'].split('\n')
-            
-            st.info(f"""
-            **{t['fertilizer_recommendation']['result_info_pre']} {crop_type} {t['fertilizer_recommendation']['result_info_in']}**
-            {t['fertilizer_recommendation']['result_info_apply'].format(prediction)}
-            {info_tips_lines[1]}
-            {info_tips_lines[2]}
-            {info_tips_lines[3]}
-            """)
-        except ValueError:
-            st.error(t['fertilizer_recommendation']['error_message'])
+            # Display usage tips
+            st.success(f"""
+**✅ Fertilizer Recommendation for {crop_type}**
 
+**Recommended Fertilizer:** {prediction}
+
+**Applied to:** {soil_type} soil
+
+**Tips:**
+- Consider current nutrient levels when determining quantity
+- Apply during the appropriate growth stage
+- Monitor soil moisture and weather conditions
+- Retest soil after 2-3 months for optimal results
+            """)
+            
+            # Show confidence level
+            if confidence > 80:
+                st.info(f"🎯 **High Confidence** ({confidence:.1f}%) - This recommendation is well-matched to your conditions")
+            elif confidence > 60:
+                st.info(f"📊 **Good Confidence** ({confidence:.1f}%) - This recommendation should work well")
+            else:
+                st.warning(f"⚠️ **Moderate Confidence** ({confidence:.1f}%) - Consider consulting with an agronomist")
+            
+        except FileNotFoundError as e:
+            st.error(f"❌ Model file not found!")
+            st.warning("""
+            Please ensure these files are in the app directory:
+            - `randpipe.pkl` (trained pipeline with preprocessor)
+            - `fert_label_encoder.pkl` (fertilizer encoder)
+            """)
+            
+        except Exception as e:
+            st.error(f"❌ Error during prediction: {type(e).__name__}")
+            st.write(f"**Details:** {str(e)}")
+            
+            # Debug info
+            with st.expander("Debug Information"):
+                st.write("Input DataFrame:")
+                st.write(input_df)
+                st.write(f"Input columns: {list(input_df.columns)}")
+                import traceback
+                st.write(traceback.format_exc())
 def mock_gemini_api_call(user_prompt, system_prompt, model_name="gemini-2.5-flash-preview-09-2025"):
     """
     Mocks the API call to the Gemini generateContent endpoint.

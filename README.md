@@ -14,7 +14,7 @@
 
 ---
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=2E7D32&center=true&vCenter=true&width=600&lines=Empowering+Farmers+with+AI;Smart+Crop+Recommendations;Disease+Detection+%26+Yield+Prediction;Agriculture+Meets+Technology" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=2E7D32&center=true&vCenter=true&width=600&lines=Empowering+Farmers+with+AI;Smart+Crop+Recommendations;Disease+Detection+%26+Fertilizer+Prediction;Agriculture+Meets+Technology" alt="Typing SVG" />
 
 </div>
 
@@ -27,7 +27,7 @@
 <tr>
 <td width="50%">
 
-**DeepAgro** is a revolutionary **AI-powered agriculture platform** that bridges the gap between traditional farming and modern technology. Our mission is to empower farmers with intelligent, data-driven insights to maximize crop yields, minimize losses, and promote sustainable farming practices.
+**DeepAgro** is a revolutionary **AI-powered agriculture platform** that bridges the gap between traditional farming and modern technology. Our mission is to empower farmers with intelligent, data-driven insights to maximize crop Fertlizer, minimize losses, and promote sustainable farming practices.
 
 By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision**, we're transforming agriculture into a smart, efficient, and profitable industry.
 

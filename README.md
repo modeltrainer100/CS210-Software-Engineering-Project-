@@ -258,77 +258,7 @@ Flexibility based on feedback
 
 ---
 
-## 📞 Contact & Support
 
-<div align="center">
-
-**Have questions or suggestions?**
-
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/yourusername/deepagro/issues)
-[![Email](https://img.shields.io/badge/Email-Contact%20Us-blue?style=for-the-badge&logo=gmail)](mailto:deepagro@iiitr.ac.in)
-[![Documentation](https://img.shields.io/badge/Docs-Read%20More-green?style=for-the-badge&logo=readthedocs)](https://github.com/yourusername/deepagro/wiki)
-
-For queries, suggestions, or collaboration opportunities:
-- 📧 Open an issue on GitHub
-- 💬 Contact any team member
-- 📝 Check our documentation
-
-</div>
-
----
-
-## 🌟 Project Impact
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="25%">
-
-### 🎯
-**Accuracy**
-
-95%+
-<br/>Disease Detection Rate
-
-</td>
-<td align="center" width="25%">
-
-### 🌾
-**Crops**
-
-38+
-<br/>Disease Classes
-
-</td>
-<td align="center" width="25%">
-
-### 📊
-**Images**
-
-87,000+
-<br/>Training Dataset
-
-</td>
-<td align="center" width="25%">
-
-### 🌍
-**Languages**
-
-10+
-<br/>Multilingual Support
-
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-<div align="center">
 
 ## 🌾 Module 1: Crop Recommendation System
 
@@ -876,6 +806,77 @@ We extend our gratitude to:
 <br/>
 
 ---
+## 📞 Contact & Support
+
+<div align="center">
+
+**Have questions or suggestions?**
+
+[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/yourusername/deepagro/issues)
+[![Email](https://img.shields.io/badge/Email-Contact%20Us-blue?style=for-the-badge&logo=gmail)](mailto:deepagro@iiitr.ac.in)
+[![Documentation](https://img.shields.io/badge/Docs-Read%20More-green?style=for-the-badge&logo=readthedocs)](https://github.com/yourusername/deepagro/wiki)
+
+For queries, suggestions, or collaboration opportunities:
+- 📧 Open an issue on GitHub
+- 💬 Contact any team member
+- 📝 Check our documentation
+
+</div>
+
+---
+
+## 🌟 Project Impact
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="25%">
+
+### 🎯
+**Accuracy**
+
+95%+
+<br/>Disease Detection Rate
+
+</td>
+<td align="center" width="25%">
+
+### 🌾
+**Crops**
+
+38+
+<br/>Disease Classes
+
+</td>
+<td align="center" width="25%">
+
+### 📊
+**Images**
+
+87,000+
+<br/>Training Dataset
+
+</td>
+<td align="center" width="25%">
+
+### 🌍
+**Languages**
+
+10+
+<br/>Multilingual Support
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+<div align="center">
 
 *© 2025 Team DeepAgro | IIIT Raichur | All Rights Reserved*
 

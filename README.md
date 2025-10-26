@@ -257,7 +257,7 @@ Flexibility based on feedback
 ---
 
 <div align="center">
-  <h2>🌾 Module 1: Crop Recommendation System</h2>
+  <h1>🌾 Module 1: Crop Recommendation System</h1>
 
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" style="margin:10px;" />
   <img src="https://img.shields.io/badge/Accuracy-99.3%25-brightgreen?style=for-the-badge" style="margin:10px;" />
@@ -423,7 +423,7 @@ Our system includes **smart validation** to detect unusual values and alert user
 
 <div align='center'>
     
-## 🧪 Module 2: Fertilizer Prediction System
+<h1> 🧪 Module 2: Fertilizer Prediction System </h1>
 
 <img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Model-Random%20Forest-green?style=for-the-badge" />

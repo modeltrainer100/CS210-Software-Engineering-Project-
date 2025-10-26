@@ -491,7 +491,7 @@ Helps reduce unnecessary fertilizer expenses
 
 <div align="center">
 
-## 🍃 Module 3: Leaf Disease Detection
+<h1>🍃 Module 3: Leaf Disease Detection </h1>
 
 <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Model-CNN-red?style=for-the-badge" />
@@ -642,7 +642,7 @@ Output Layer (38 Disease Classes)
 
 <div align="center">
 
-## 🤖 Module 4: AI Farmer Assistant Chatbot
+<h1> 🤖 Module 4: AI Farmer Assistant Chatbot </h1>
 
 <img src="https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Type-Multilingual-purple?style=for-the-badge" />

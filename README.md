@@ -137,8 +137,6 @@ gantt
 |:---------|:------------|:----:|
 | 📋 Feasibility Report | Complete project feasibility analysis | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
 | 📊 Requirements Specification | Detailed system requirements | [View](https://drive.google.com/drive/folders/1d_iCbjAw_72OWou1FsPdBFdg2EcPSrTW) |
-| 🎨 Design Documents | System architecture & design | Coming Soon |
-| 📖 User Manual | Complete usage guide | Coming Soon |
 
 </div>
 

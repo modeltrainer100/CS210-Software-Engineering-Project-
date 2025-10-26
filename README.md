@@ -880,6 +880,6 @@ We extend our gratitude to:
 
 ---
 
-*© 2024 Team DeepAgro | IIIT Raichur | All Rights Reserved*
+*© 2025 Team DeepAgro | IIIT Raichur | All Rights Reserved*
 
 </div>

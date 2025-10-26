@@ -257,9 +257,9 @@ Flexibility based on feedback
 ---
 
 
-
+<div align='center'>
 ## 🌾 Module 1: Crop Recommendation System
-<div>
+
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" style="margin:10px;" />
   <img src="https://img.shields.io/badge/Accuracy-99.3%25-brightgreen?style=for-the-badge" style="margin:10px;" />
   <img src="https://img.shields.io/badge/Model-XGBoost-blue?style=for-the-badge" />

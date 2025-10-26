@@ -122,8 +122,8 @@ gantt
 |:-----:|:-------|:------:|:--------:|
 | ✅ | Requirements & Feasibility Analysis | **Completed** | Aug 2024 |
 | ✅ | Module 1: Crop Recommendation System | **Completed** | Sep-Oct 2024 |
-| 🔄 | Module 2: Fertilizer Prediction | **In Progress** | Oct-Nov 2024 |
-| ✅ | Module 3: Leaf Disease Detection | **Completed** | Nov 2024 |
+| ✅ | Module 2: Fertilizer Prediction | **Completed** | Oct-Nov 2024 |
+| 🔄| Module 3: Leaf Disease Detection |  **In Progress**  Nov 2024 |
 | 🔄 | Module 4: AI Farmer Assistant | **In Development** | Nov 2024-Jan 2025 |
 | ⏳ | Integration & Final Deployment | Planned | Jan-Feb 2025 |
 

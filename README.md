@@ -423,9 +423,12 @@ Our system includes **smart validation** to detect unusual values and alert user
 
 ## 🧪 Module 2: Fertilizer Prediction System
 
+<div style:"display:flex">
 <img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Model-Random%20Forest-green?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Fertilizers-7%20Types-blue?style=for-the-badge" />
+</div>
+
 
 </div>
 

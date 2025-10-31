@@ -27,7 +27,7 @@
 <tr>
 <td width="50%">
 
-**DeepAgro** is a revolutionary **AI-powered agriculture platform** that bridges the gap between traditional farming and modern technology. Our mission is to empower farmers with intelligent, data-driven insights to maximize crop Fertlizer, minimize losses, and promote sustainable farming practices.
+**DeepAgro** is a revolutionary **AI-powered agriculture platform** that bridges the gap between traditional farming and modern technology. Our mission is to empower farmers with intelligent, data-driven insights to maximize crop yield, minimize losses, and promote sustainable farming practices.
 
 By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision**, we're transforming agriculture into a smart, efficient, and profitable industry.
 
@@ -55,13 +55,14 @@ By leveraging cutting-edge **Machine Learning algorithms** and **Computer Vision
 | Module | Description | Status | Technology |
 |:------:|:------------|:------:|:----------:|
 | 🌾 | **Crop Recommendation System**<br/>*Intelligent crop suggestions based on soil & climate* | ✅ Complete | XGBoost, ML |
-| 📈 | **Fertilizer Prediction**<br/>*Accurate harvest forecasting for better planning* | ✅ Complete  | Machine Learning |
-| 🍃 | **Leaf Disease Detection**<br/>*Early disease identification using image recognition* | ⏳ In Process | CNN, CV |
-| 🤖 | **AI Farmer Assistant**<br/>*Smart chatbot for real-time farming queries* | ⏳ Planned | NLP, LLM |
+| 🧪 | **Fertilizer Prediction**<br/>*Optimal fertilizer recommendation system* | ✅ Complete | Random Forest |
+| 🍃 | **Leaf Disease Detection**<br/>*Early disease identification using image recognition* | ✅ Complete | CNN, CV |
+| 🤖 | **AI Farmer Assistant**<br/>*Smart chatbot for real-time farming queries* | 🔄 In Development | NLP, LLM |
 
 </div>
 
 ---
+
 ## 🛠️ Technology Stack
 
 <div align="center">
@@ -106,7 +107,7 @@ gantt
     Crop Recommendation         :done,    mod1, 2024-09-01, 45d
     Testing & Validation        :done,    test1, 2024-10-01, 15d
     section Module 2
-    Fertilizer Prediction       :active,  mod2, 2024-10-15, 40d
+    Fertilizer Prediction       :done,  mod2, 2024-10-15, 40d
     section Module 3
     Disease Detection           :done,    mod3, 2024-11-01, 30d
     section Module 4
@@ -123,7 +124,7 @@ gantt
 | ✅ | Requirements & Feasibility Analysis | **Completed** | Aug 2024 |
 | ✅ | Module 1: Crop Recommendation System | **Completed** | Sep-Oct 2024 |
 | ✅ | Module 2: Fertilizer Prediction | **Completed** | Oct-Nov 2024 |
-| 🔄| Module 3: Leaf Disease Detection |  **In Progress**  Nov 2024 |
+| ✅| Module 3: Leaf Disease Detection |  **Completed**  | Nov 2024 |
 | 🔄 | Module 4: AI Farmer Assistant | **In Development** | Nov 2024-Jan 2025 |
 | ⏳ | Integration & Final Deployment | Planned | Jan-Feb 2025 |
 
@@ -263,8 +264,6 @@ Flexibility based on feedback
   <img src="https://img.shields.io/badge/Accuracy-99.3%25-brightgreen?style=for-the-badge" style="margin:10px;" />
   <img src="https://img.shields.io/badge/Model-XGBoost-blue?style=for-the-badge" style="margin:10px;" />
 </div>
-
-
 
 ### 📖 Overview
 
@@ -421,11 +420,13 @@ Our system includes **smart validation** to detect unusual values and alert user
 ╚════════════════════════════════════════════════════════════╝
 ```
 
+---
+
 <div align='center'>
     
 <h1> 🧪 Module 2: Fertilizer Prediction System </h1>
 
-<img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Model-Random%20Forest-green?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Fertilizers-7%20Types-blue?style=for-the-badge" />
 </div>
@@ -433,6 +434,8 @@ Our system includes **smart validation** to detect unusual values and alert user
 ### 📖 Overview
 
 The **Fertilizer Prediction System** is an intelligent recommendation engine that suggests the most suitable fertilizer type based on soil composition, crop type, and environmental factors. This helps farmers optimize fertilizer usage, reduce costs, and improve soil health.
+
+---
 
 ### 🔍 Key Features
 
@@ -462,6 +465,8 @@ Helps reduce unnecessary fertilizer expenses
 </tr>
 </table>
 
+---
+
 ### 📊 Fertilizer Types Supported
 
 <div align="center">
@@ -478,14 +483,15 @@ Helps reduce unnecessary fertilizer expenses
 
 </div>
 
+---
+
 ### 🎯 Input Parameters
 
-- 🌡️ **Temperature** - Atmospheric temperature
-- 💧 **Humidity** - Relative humidity percentage
-- 💦 **Moisture** - Soil moisture content
-- 🌾 **Crop Type** - Type of crop to be cultivated
-- 🔬 **N, P, K** - Nitrogen, Phosphorus, Potassium levels
-- ⚗️ **pH** - Soil pH value
+<div align="center">
+
+🌡️ **Temperature** • 💧 **Humidity** • 💦 **Moisture** • 🌾 **Crop Type** • 🔬 **N, P, K Levels** • ⚗️ **pH Value**
+
+</div>
 
 ---
 
@@ -503,6 +509,8 @@ Helps reduce unnecessary fertilizer expenses
 ### 📖 Overview
 
 Our **Leaf Disease Detection System** uses advanced **Convolutional Neural Networks (CNN)** to identify plant diseases from leaf images. Trained on a massive dataset of **87,000+ images**, this system can detect multiple diseases across various crops with high accuracy.
+
+---
 
 ### 🎯 Key Capabilities
 
@@ -539,6 +547,8 @@ Provides remedies and prevention tips
 </tr>
 </table>
 
+---
+
 ### 🤖 Deep Learning Architecture
 
 ```
@@ -555,6 +565,8 @@ Fully Connected Layers
 Output Layer (38 Disease Classes)
 ```
 
+---
+
 ### 📊 Model Performance
 
 <div align="center">
@@ -570,39 +582,59 @@ Output Layer (38 Disease Classes)
 
 </div>
 
-### 🌱 Supported Crops & Diseases
+---
 
-**Crops Covered:**
-- 🍅 Tomato (10 diseases)
-- 🌽 Corn (4 diseases)
-- 🥔 Potato (3 diseases)
-- 🍃 Pepper (2 diseases)
-- 🍇 Grape (4 diseases)
-- 🍎 Apple (4 diseases)
-- And many more...
+### 🌱 Crops & Diseases Coverage
 
-**Common Diseases Detected:**
-- Early Blight
-- Late Blight
-- Bacterial Spot
-- Leaf Mold
-- Septoria Leaf Spot
-- Spider Mites
-- Target Spot
-- Yellow Leaf Curl Virus
-- Mosaic Virus
-- Healthy (No Disease)
+<div align="center">
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🌾 Supported Crops (10+)
+
+🍅 **Tomato** (10 diseases)  
+🌽 **Corn** (4 diseases)  
+🥔 **Potato** (3 diseases)  
+🍃 **Pepper** (2 diseases)  
+🍇 **Grape** (4 diseases)  
+🍎 **Apple** (4 diseases)  
+*...and more*
+
+</td>
+<td width="50%">
+
+#### 🦠 Disease Detection (38+)
+
+✓ Early & Late Blight  
+✓ Bacterial Spot  
+✓ Leaf Mold  
+✓ Septoria Leaf Spot  
+✓ Spider Mites  
+✓ Target Spot  
+✓ Yellow Leaf Curl Virus  
+✓ Mosaic Virus  
+✓ Healthy Detection
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
 
 ### 📁 Dataset Information
 
 <div align="center">
 
-**Training Images:** 87,000+  
-**Image Resolution:** 224x224 pixels  
-**Data Augmentation:** Rotation, Flip, Zoom, Brightness  
-**Train/Val/Test Split:** 70% / 15% / 15%
+**Training Images:** 87,000+ | **Resolution:** 224x224 px | **Augmentation:** ✅ Rotation, Flip, Zoom, Brightness  
+**Split Ratio:** 70% Train / 15% Val / 15% Test
 
 </div>
+
+---
 
 ### 🎯 Sample Diagnosis Output
 
@@ -649,7 +681,6 @@ Output Layer (38 Disease Classes)
 <img src="https://img.shields.io/badge/Languages-10%2B-blue?style=for-the-badge" />
 <img src="https://img.shields.io/badge/AI-NLP%20Powered-green?style=for-the-badge" />
 
-</div>
 
 ### 📖 Overview
 

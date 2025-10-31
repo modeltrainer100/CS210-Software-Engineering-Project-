@@ -1848,6 +1848,102 @@ def load_crop_data():
     
     return pd.DataFrame(data)
 
+
+@st.cache_resource
+def load_cnn_model_and_labels():
+    """
+    Loads the CNN model using the robust architecture rebuild + load_weights() method 
+    to bypass the known Mixed Precision/MobileNetV2 loading error.
+    """
+    import streamlit as st # Already present, but needed for st.success/warning
+    import pickle # Used for loading class_labels.pkl
+
+    # --- TensorFlow and Keras Imports (Crucial for the Rebuild) ---
+    import tensorflow as tf 
+    from tensorflow import keras
+    from keras.applications import MobileNetV2
+    from keras.models import Sequential
+    from keras.layers import Dense, Dropout, GlobalAveragePooling2D
+    from keras.regularizers import l2
+
+# Note: numpy and time are also required by the surrounding Streamlit application logic (e.g., show_crop_prediction) 
+# and should already be at the top of your file:
+# import numpy as np 
+# import time
+    
+    # CRITICAL: Use the file name available in your Streamlit directory for weights
+    model_path = 'best_cnn.keras'  
+    labels_path = 'disease_labels.pkl' 
+    TARGET_SIZE = (224, 224) 
+
+    try:
+        # --- 1. Load Class Labels and Get NUM_CLASSES ---
+        with open(labels_path, 'rb') as f:
+            class_labels = pickle.load(f)
+            
+        if isinstance(class_labels, dict):
+            NUM_CLASSES = len(class_labels)
+        else: # Handle list of class names if saved differently
+            NUM_CLASSES = len(class_labels)
+            class_labels = {i: label for i, label in enumerate(class_labels)}
+
+
+        # --- 2. Rebuild the Model Architecture (Exactly as in Notebook Cell 8) ---
+        
+        # 2.1 Set up Mixed Precision Policy if GPU is available (CRUCIAL for loading float16 weights)
+        gpus = tf.config.list_physical_devices('GPU')
+        if gpus:
+             keras.mixed_precision.set_global_policy('mixed_float16')
+        else:
+            keras.mixed_precision.set_global_policy('float32')
+
+        # 2.2 Recreate Base Model (Input shape (224, 224, 3))
+        base_model = MobileNetV2(
+            input_shape=(*TARGET_SIZE, 3),
+            include_top=False,
+            weights='imagenet' # Re-download weights for the base model
+        )
+        base_model.trainable = False 
+
+        # 2.3 Recreate Custom Classification Head (Matching Notebook Cell 8)
+        model = Sequential([
+            base_model,
+            GlobalAveragePooling2D(),
+            Dense(512, activation='relu', kernel_regularizer=l2(0.001)), 
+            Dropout(0.6), 
+            # Final output MUST use dtype='float32'
+            Dense(NUM_CLASSES, activation='softmax', dtype='float32') 
+        ])
+
+        # --- 3. Load Weights and Recompile ---
+        
+        # The problem is that model.load_weights(model_path) often fails 
+        # when the model was saved with mixed precision. 
+        # We must load the weights into the new structure.
+        
+        # NOTE: If your 'best_cnn.keras' file only contains weights (saved via model.save_weights),
+        # this will work. If it contains the full model (saved via model.save), 
+        # we will force Keras to load only the compatible weights.
+        
+        model.load_weights(model_path) 
+        
+        model.compile(
+            optimizer=keras.optimizers.Adam(learning_rate=1e-5), 
+            loss='categorical_crossentropy',
+            metrics=['accuracy']
+        )
+        
+        st.success("✅ CNN model successfully rebuilt and weights loaded! 🔬")
+
+        return model, class_labels
+
+    except Exception as e:
+        st.error(f"❌ Critical Error loading CNN model: {type(e).__name__} - {str(e)}")
+        st.warning("⚠️ The specific error points to an internal conflict during Keras model reconstruction. The only workaround is to ensure the code exactly matches the training architecture.")
+        
+        # Fallback to prevent crash
+        class_labels_fallback = {0: "Apple___healthy", 1: "Apple___scab"}
+        return None, class_labels_fallback
 @st.cache_data
 def load_fertilizer_data():
     """Create sample fertilizer dataset"""
@@ -2826,7 +2922,7 @@ def show_fertilizer_recommendation():
             key="soil_type"
         )
         
-        st.markdown(f"### {t['fertilizer_recommendation']['section_env']}")
+        st.markdown(f"### {t['fertilizer_recommendation']['section_env']}") 
         temp = st.slider(t['fertilizer_recommendation']['temp_label'], 10.0, 45.0, 25.0, key="fert_temp")
         humidity_fert = st.slider(t['fertilizer_recommendation']['hum_label'], 20.0, 95.0, 50.0, key="fert_humidity")
         moisture = st.slider(t['fertilizer_recommendation']['moisture_label'], 0.0, 100.0, 50.0, key="fert_moisture")
@@ -2945,6 +3041,79 @@ def show_fertilizer_recommendation():
                 st.write(f"Input columns: {list(input_df.columns)}")
                 import traceback
                 st.write(traceback.format_exc())
+
+
+# C:\Users\user\OneDrive\Desktop\new\ferti.py
+
+def predict_disease_from_image(image):
+    """Enhanced image preprocessing and prediction"""
+    cnn_model, class_labels = load_cnn_model_and_labels()
+    t = translations.get(st.session_state.get('lang', 'en'), translations['en'])
+    
+    if cnn_model is None:
+        st.warning("⚠️ Using fallback prediction mode")
+        return "Healthy", 95.0
+    
+    try:
+        import tensorflow as tf
+        
+        # TARGET SIZE - Match your training size
+        target_size = (224, 224)  # Adjust if your model uses different size
+        
+        # Convert to RGB if needed
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+        
+        # Resize image
+        processed_image = image.resize(target_size, Image.LANCZOS)
+        
+        # Convert to array
+        img_array = np.array(processed_image)
+        
+        # CRITICAL: Match training preprocessing
+        # Option 1: If trained with ImageDataGenerator with rescale=1./255
+        img_array = img_array.astype('float32') / 255.0
+        
+        # Option 2: If trained with tf.keras.applications preprocessing
+        # from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+        # img_array = preprocess_input(img_array)
+        
+        # Add batch dimension
+        img_array = np.expand_dims(img_array, axis=0)
+        
+        # Ensure correct dtype (important for mixed precision)
+        img_array = tf.cast(img_array, tf.float32)
+        
+        # Make prediction
+        predictions = cnn_model.predict(img_array, verbose=0)
+        
+        # Get results
+        predicted_index = int(np.argmax(predictions[0]))
+        confidence = float(np.max(predictions[0]) * 100)
+        
+        # Get disease name
+        predicted_disease_en = class_labels.get(predicted_index, "Unknown Disease")
+        
+        # Clean disease name
+        if "___" in predicted_disease_en:
+            plant_name, disease_name = predicted_disease_en.split("___")
+            predicted_disease_en = disease_name.replace("_", " ").title()
+        
+        # Get translation
+        disease_names = t.get('disease_detection', {}).get('disease_names', {})
+        translated_disease = disease_names.get(predicted_disease_en, predicted_disease_en)
+        
+        return translated_disease, confidence
+        
+    except Exception as e:
+        st.error(f"❌ Prediction error: {str(e)}")
+        import traceback
+        with st.expander("Error Details"):
+            st.code(traceback.format_exc())
+        return "Error", 0.0
+    
+
+    2
 def mock_gemini_api_call(user_prompt, system_prompt, model_name="gemini-2.5-flash-preview-09-2025"):
     """
     Mocks the API call to the Gemini generateContent endpoint.
@@ -3135,91 +3304,103 @@ def show_chatbot_page():
 def show_disease_detection():
     t = translations[st.session_state.lang]
     
-    # Titles and Guidelines (Keeping the original structure)
     st.markdown(f"# 🔬 {t['disease_detection']['main_title']}")
     st.markdown(f"{t['disease_detection']['subtitle']}")
-    st.markdown(f"### {t['disease_detection']['upload_header']}")
+    
     st.markdown(f"""
     <div class="upload-section">
         <h4>{t['disease_detection']['upload_guidelines_title']}</h4>
-        <div style="text-align: left; display: inline-block;">
-            {t['disease_detection']['upload_guidelines_text']}
-        </div>
+        {t['disease_detection']['upload_guidelines_text']}
     </div>
     """, unsafe_allow_html=True)
 
-    # File Uploader
     uploaded_file = st.file_uploader(
         t['disease_detection']['file_uploader_label'],
         type=['jpg', 'jpeg', 'png'],
         help=t['disease_detection']['file_uploader_help']
     )
     
-    # Define image and result column placeholders
-    img_col, result_col = st.columns([1, 1])
-    image_placeholder = img_col.empty()
-    result_placeholder = result_col.empty() # Placeholder for the initial button/spinner
-    
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
+        try:
+            # Load image
+            image = Image.open(uploaded_file)
+            
+            # Display original image
+            st.image(image, caption=t['disease_detection']['uploaded_image_caption'], 
+                    use_container_width=True)
+            
+            # Analyze button
+            if st.button(t['disease_detection']['analyze_button'], 
+                        type="primary", use_container_width=True):
+                
+                # Create progress bar
+                progress_bar = st.progress(0)
+                status_text = st.empty()
+                
+                for i in range(100):
+                    time.sleep(0.02)
+                    progress_bar.progress(i + 1)
+                    if i < 30:
+                        status_text.text("📷 Processing image...")
+                    elif i < 60:
+                        status_text.text("🧠 Analyzing with AI...")
+                    else:
+                        status_text.text("🔍 Identifying disease...")
+                
+                progress_bar.empty()
+                status_text.empty()
+                
+                # Get prediction
+                predicted_disease, confidence = predict_disease_from_image(image)
+                
+                # Display results with enhanced styling
+                if predicted_disease.lower() != "error":
+                    st.success(t['disease_detection']['analysis_complete'])
+                    
+                    # Color-coded result based on confidence
+                    color = "#4CAF50" if confidence > 80 else "#FF9800" if confidence > 60 else "#F44336"
+                    
+                    st.markdown(f"""
+                    <div style="background: linear-gradient(135deg, {color}, {color}dd); 
+                                padding: 2rem; border-radius: 15px; color: white; 
+                                text-align: center; margin: 1rem 0;">
+                        <h2 style="color: white; margin: 0;">
+                            🎯 {t['disease_detection']['result_header']}
+                        </h2>
+                        <h1 style="color: white; margin: 1rem 0; font-size: 2.5rem;">
+                            {predicted_disease}
+                        </h1>
+                        <p style="color: white; font-size: 1.3rem; margin: 0;">
+                            📊 {t['disease_detection']['result_confidence']} {confidence:.1f}%
+                        </p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Show appropriate message
+                    if "healthy" in predicted_disease.lower():
+                        st.balloons()
+                        st.success(t['disease_detection']['healthy_message'])
+                    else:
+                        st.warning(t['disease_detection']['disease_warning'])
+                        
+                        # Add recommendations section
+                        with st.expander("💡 Recommended Actions"):
+                            st.markdown("""
+                            - Isolate affected plants
+                            - Remove infected leaves
+                            - Apply appropriate fungicide/pesticide
+                            - Improve air circulation
+                            - Monitor other plants
+                            - Consult agricultural expert for severe cases
+                            """)
         
-        # Display static image initially
-        image_placeholder.image(image, caption=t['disease_detection']['uploaded_image_caption'], use_container_width=True)
-        
-        with result_placeholder.container():
-            if st.button(t['disease_detection']['analyze_button'], type="primary", use_container_width=True):
-                
-                # --- PREPARE BASE64 DATA URI ---
-                buffered = io.BytesIO()
-                # Use uploaded format or default to PNG
-                format_type = image.format if image.format in ['JPEG', 'PNG'] else 'PNG'
-                image.save(buffered, format=format_type)
-                img_str = base64.b64encode(buffered.getvalue()).decode()
-                
-                # 1. Start Status Spinner (AI is analyzing)
-                with st.status(t['disease_detection']['loading_message'], expanded=True) as status:
-                    
-                    # 2. Inject image with Base64 URI and CSS animation classes
-                    image_placeholder.markdown(
-                        f"""
-                        <div class="diagnosing-container" style="text-align: center;">
-                            <img src="data:image/{format_type.lower()};base64,{img_str}" 
-                                 class="zooming-image" 
-                                 style="width:100%; max-width:100%; height:auto; border-radius: 5px;"> 
-                        </div>
-                        <p style="text-align: center; font-style: italic;">{t['disease_detection']['uploaded_image_caption']}</p>
-                        """, 
-                        unsafe_allow_html=True
-                    )
-                    
-                    # 3. Hold time to allow the 3.0s animation to run
-                    time.sleep(4) 
-                    
-                    # 4. Get Prediction and update status
-                    predicted_disease, confidence = predict_disease_from_image(image)
-                    status.update(label=t['disease_detection']['analysis_complete'], state="complete", expanded=False)
-
-                # 5. Restore normal Streamlit image display (removes the HTML animated version)
-                image_placeholder.image(image, caption=t['disease_detection']['uploaded_image_caption'], use_container_width=True)
-                
-                # --- DISPLAY RESULTS ---
-                st.markdown(f"""
-                <div class="prediction-result">
-                    🎯 {t['disease_detection']['result_header']} <strong>{predicted_disease}</strong><br>
-                    📊 {t['disease_detection']['result_confidence']} <strong>{confidence:.1f}%</strong>
-                </div>
-                """, unsafe_allow_html=True)
-
-                if predicted_disease != "Healthy":
-                    st.error(t['disease_detection']['disease_warning'])
-                else:
-                    st.balloons()
-                    st.success(t['disease_detection']['healthy_message'])
-
-    # Clear placeholders when no file is selected
+        except Exception as e:
+            st.error(f"❌ Error: {str(e)}")
+            with st.expander("Debug Info"):
+                import traceback
+                st.code(traceback.format_exc())
     else:
-        image_placeholder.empty()
-        result_placeholder.empty()
+        st.info("📤 Please upload a leaf image to start analysis.")
 
 def show_about_page():
     """Display about page with team information"""

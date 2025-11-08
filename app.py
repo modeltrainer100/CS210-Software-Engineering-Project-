@@ -17,6 +17,7 @@ import pickle
 import joblib
 import requests
 import json
+import numpy
 from sklearn.compose import ColumnTransformer
 translations = {
   "en": {

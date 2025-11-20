@@ -3,7 +3,7 @@ pandas
 numpy
 Pillow
 plotly
-scikit-learn
+scikit-learn==1.6.1
 xgboost
 tensorflow
 joblib

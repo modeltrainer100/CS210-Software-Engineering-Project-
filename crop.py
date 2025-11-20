@@ -9,6 +9,9 @@ import os
 model_dir = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
 pipeline_path = os.path.join(model_dir, 'croppred.pkl')
 encoder_path = os.path.join(model_dir, 'crop_label_encoder.pkl')
+print("DEBUG MODEL DIR:", model_dir)
+print("DEBUG PIPELINE PATH:", pipeline_path)
+print("DEBUG ENCODER PATH:", encoder_path)
 
 def load_model():
     
@@ -66,7 +69,7 @@ class features(BaseModel):
     humidity:Annotated[float,Field(...,description='Gender of the patient')]
     ph:Annotated[float,Field(...,description='pH level')]
     rainfall:Annotated[float,Field(...,gt=0,description='Weight of the patient in kg')]
-@app.post('/crop')
+@app.post('/predict/crop')
 def cropPediction(data: features):
     model, encoder = load_model()
     try:
@@ -88,7 +91,7 @@ def cropPediction(data: features):
         # Return the single predicted string (e.g., 'Urea')
         return JSONResponse(
             status_code=200, 
-            content={'Predicted fertilizer': pred_decoded[0]}
+            content={'Predicted crop': pred_decoded[0]}
         )
     
     except Exception as e:
@@ -98,10 +101,12 @@ def cropPediction(data: features):
     
 @app.get("/health")
 def health_check():
-    model = load_model()
-    if model is None:
+    pipeline, encoder = load_model()   # unpack the tuple
+
+    if pipeline is None or encoder is None:
         raise HTTPException(
-            status_code=503, 
+            status_code=503,
             detail="Service unavailable: Model not loaded"
         )
+    
     return {"status": "healthy", "model_loaded": True}

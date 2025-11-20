@@ -8,3 +8,8 @@ xgboost
 tensorflow
 joblib
 requests
+python-dotenv
+fastapi
+uvicorn
+pydantic
+pickle

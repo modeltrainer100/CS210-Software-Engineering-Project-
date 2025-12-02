@@ -10,7 +10,6 @@ from typing import Annotated, Literal, Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException, Path, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, computed_field
-from fastapi.middleware.cors import CORSMiddleware
 
 # TensorFlow/Keras for Image Model
 import tensorflow as tf
@@ -36,14 +35,6 @@ app = FastAPI(
     title="Combined ML and Weather API",
     description="API for Plant Disease (Keras), Crop Prediction (Joblib), Fertilizer Prediction (Pickle), and Mock Weather Data."
 )
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins - restrict this in production
-    allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers
-)
-
 
 # Determine the directory where the script is running to find model files
 MODEL_DIR = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
@@ -298,6 +289,7 @@ async def predict_disease(file: UploadFile = File(...)):
 # --- Crop Prediction Endpoint (from original block) ---
 @app.post('/predict/crop', tags=["Crop Recommendation"])
 def crop_prediction(data: CropFeatures):
+    """Predicts the most suitable crop based on soil and environmental data."""
     model, encoder = CROP_MODEL_PIPELINE, CROP_LABEL_ENCODER 
     
     if model is None or encoder is None:
@@ -316,20 +308,19 @@ def crop_prediction(data: CropFeatures):
         
         pred = model.predict(input_data)
         pred_decoded = encoder.inverse_transform(pred)
-
-        # Convert to normal Python type
-        if isinstance(pred_decoded, (list, np.ndarray)):
-            pred_decoded = pred_decoded[0]
-
+        
+        if hasattr(pred_decoded, 'tolist'):
+            pred_decoded = pred_decoded.tolist()
+        
         return JSONResponse(
-            status_code=200,
-            content={'Predicted crop': pred_decoded}
+            status_code=200, 
+            # NOTE: Keeping original key 'Predicted fertilizer' as requested, but it should be 'Predicted crop'
+            content={'Predicted fertilizer': pred_decoded[0]} 
         )
     
     except Exception as e:
         print(f"ERROR in /predict/crop: {e}")
         raise HTTPException(status_code=500, detail="Model Prediction Failed")
-
 
 # --- Fertilizer Prediction Endpoint (from original block) ---
 @app.post('/predict/fertilizer', tags=["Fertilizer Recommendation"])

@@ -15,9 +15,6 @@ from sklearn.linear_model import LogisticRegression
 import time
 import pickle 
 import joblib
-import requests
-import json
-import numpy
 from sklearn.compose import ColumnTransformer
 translations = {
   "en": {
@@ -27,7 +24,6 @@ translations = {
     "nav_crop": "🌾 Crop Prediction",
     "nav_fertilizer": "🧪 Fertilizer Recommendation",
     "nav_disease": "🔬 Disease Detection",
-    "nav_chat": "🤖 DeepAgro AI Assistant",
     "nav_about": "👥 About Us",
     "home": {
       "header_logo": "🌱 DeepAgro",
@@ -182,15 +178,6 @@ translations = {
       "disease_warning": "❗ Your plant may be diseased. Please consult a professional for confirmation.",
       "healthy_message": "✅ Plant appears to be healthy!"
     },
-    "chatbot_page": {
-        "main_title": "🤖 DeepAgro Chatbot - AI Agriculture Assistant",
-        "subtitle": "Ask any question related to farming, crops, soil, or fertilizers!",
-        "initial_message": "Hello! I am DeepAgro Chatbot, your AI agriculture assistant. How can I help you with your farm today?",
-        "user_placeholder": "Ask your agriculture question here...",
-        "send_button": "Send 🚀",
-        "loading": "DeepChat is thinking...",
-        "error": "Sorry, I encountered an error. Please try again or rephrase your question."
-    },
     "about_page": {
       "main_title": "👥 About Us",
       "subtitle": "Meet the innovative team behind the smart agriculture revolution!",
@@ -200,7 +187,7 @@ translations = {
       "team_desc": "A passionate group of students from IIIT Raichur working together to revolutionize agriculture with technology.",
       "tech_stack_header": "🛠️ Technology Stack",
       "ml_title": "🤖 Machine Learning",
-      "ml_text": "• XGBOOSTr<br>• Scikit-learn<br>• CNN <br>• Feature Engineering",
+      "ml_text": "• Random Forest Classifier<br>• Scikit-learn<br>• NumPy & Pandas<br>• Feature Engineering",
       "web_title": "🌐 Web Framework",
       "web_text": "• Streamlit<br>• Python Backend<br>• Interactive UI/UX<br>• Real-time Processing",
       "data_title": "📊 Data & Visualization",
@@ -226,7 +213,6 @@ translations = {
         "nav_crop": "🌾 फसल भविष्यवाणी",
         "nav_fertilizer": "🧪 उर्वरक अनुशंसा",
         "nav_disease": "🔬 रोग का पता लगाना",
-        "nav_chat": "🤖 दीपएग्रो एआई सहायक",
         "nav_about": "👥 हमारे बारे में",
         "home": {
             "header_logo": "🌱 दीपएग्रो",
@@ -429,7 +415,6 @@ translations = {
       "nav_crop": "🌾 பயிர் கணிப்பு",
       "nav_fertilizer": "🧪 உரப் பரிந்துரை",
       "nav_disease": "🔬 நோய் கண்டறிதல்",
-      "nav_chat": "🤖 டீப்அக்ரோ AI உதவியாளர்",
       "nav_about": "👥 எங்களைப் பற்றி",
       "home": {
         "header_logo": "🌱 டீப்அக்ரோ",
@@ -618,7 +603,6 @@ translations = {
     "nav_home": "🏠 హోమ్",
     "nav_crop": "🌾 పంట అంచనా",
     "nav_fertilizer": "🧪 ఎరువుల సిఫార్సు",
-    "nav_chat": "🤖 డీప్‌అగ్రో AI సహాయకుడు",
     "nav_disease": "🔬 వ్యాధి గుర్తింపు",
     "nav_about": "👥 మా గురించి",
     "home": {
@@ -809,7 +793,6 @@ translations = {
     "nav_crop": "🌾 ਫਸਲ ਦੀ ਭਵਿੱਖਬਾਣੀ",
     "nav_fertilizer": "🧪 ਖਾਦ ਦੀ ਸਿਫਾਰਸ਼",
     "nav_disease": "🔬 ਰੋਗ ਦਾ ਪਤਾ ਲਗਾਉਣਾ",
-    "nav_chat": "🤖 ਦੀਪਐਗਰੋ AI ਸਹਾਇਕ",
     "nav_about": "👥 ਸਾਡੇ ਬਾਰੇ",
     "home": {
       "header_logo": "🌱 ਦੀਪਐਗਰੋ",
@@ -994,12 +977,11 @@ translations = {
   }, 
    'or': {
     'page_title': "ଦୀପଆଗ୍ରୋ - ସ୍ମାର୍ଟ କୃଷି",
-    'sidebar_title': "🌾ନାଭିଗେସନ",
+    'sidebar_title': "🌾 ନାଭିଗେସନ",
     'nav_home': "🏠 ହୋମ",
     'nav_crop': "🌾 ଫସଲ ପୂର୍ବାନୁମାନ",
     'nav_fertilizer': "🧪 ସାର ସୁପାରିଶ",
     'nav_disease': "🔬 ରୋଗ ଚିହ୍ନଟ",
-    "nav_chat": "🤖 ଦୀପଆଗ୍ରୋ AI ସହାୟକ",
     'nav_about': "👥 ଆମ ବିଷୟରେ",
     'home': {
         'header_logo': '🌱 ଦୀପଆଗ୍ରୋ',
@@ -1189,7 +1171,6 @@ translations = {
     'nav_crop': "🌾 ফসল পূর্বাভাস",
     'nav_fertilizer': "🧪 সারের সুপারিশ",
     'nav_disease': "🔬 রোগ শনাক্তকরণ",
-    "nav_chat": "🤖 ডীপএগ্রো এআই সহকারী",
     'nav_about': "👥 আমাদের সম্পর্কে",
     'home': {
         'header_logo': '🌱 ডীপএগ্রো',
@@ -1374,12 +1355,11 @@ translations = {
 }, 
 'mr': {
     'page_title': "डीपअॅग्रो - स्मार्ट शेती",
-    'sidebar_title': "🌾नेव्हिगेशन",
+    'sidebar_title': "🌾 नेव्हिगेशन",
     'nav_home': "🏠 मुख्यपृष्ठ",
     'nav_crop': "🌾 पिकाचा अंदाज",
     'nav_fertilizer': "🧪 खताची शिफारस",
     'nav_disease': "🔬 रोगाची ओळख",
-    "nav_chat": "🤖 डीपअॅग्रो एआय सहाय्यक",
     'nav_about': "👥 आमच्याबद्दल",
     'home': {
         'header_logo': '🌱 डीपअॅग्रो',
@@ -1646,7 +1626,7 @@ st.markdown("""
         font-size: 1.8rem !important;
         font-weight: 700 !important;
     }
-    css<br> /* Chatbot Styles */<br> .chat-message-container {<br> display: flex;<br> margin-bottom: 15px;<br> align-items: flex-end;<br> }<br> .user-message {<br> justify-content: flex-end;<br> text-align: right;<br> }<br> .message-content {<br> max-width: 80%;<br> padding: 12px 18px;<br> border-radius: 20px;<br> font-size: 1rem;<br> line-height: 1.5;<br> box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);<br> }<br> .user-message .message-content {<br> background-color: #e3f2fd; /* Light Blue */<br> color: #1a237e;<br> border-bottom-right-radius: 5px;<br> }<br> .ai-message .message-content {<br> background-color: #e8f5e8; /* Light Green */<br> color: #1b5e20;<br> border-bottom-left-radius: 5px;<br> }<br> .message-icon {<br> font-size: 2rem;<br> margin: 0 10px;<br> line-height: 1;<br> }<br>
+    
     .metric-card p {
         color: #2e7d32 !important;
         margin: 0.5rem 0 0 0 !important;
@@ -1849,102 +1829,6 @@ def load_crop_data():
     
     return pd.DataFrame(data)
 
-
-@st.cache_resource
-def load_cnn_model_and_labels():
-    """
-    Loads the CNN model using the robust architecture rebuild + load_weights() method 
-    to bypass the known Mixed Precision/MobileNetV2 loading error.
-    """
-    import streamlit as st # Already present, but needed for st.success/warning
-    import pickle # Used for loading class_labels.pkl
-
-    # --- TensorFlow and Keras Imports (Crucial for the Rebuild) ---
-    import tensorflow as tf 
-    from tensorflow import keras
-    from keras.applications import MobileNetV2
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout, GlobalAveragePooling2D
-    from keras.regularizers import l2
-
-# Note: numpy and time are also required by the surrounding Streamlit application logic (e.g., show_crop_prediction) 
-# and should already be at the top of your file:
-# import numpy as np 
-# import time
-    
-    # CRITICAL: Use the file name available in your Streamlit directory for weights
-    model_path = 'best_cnn.keras'  
-    labels_path = 'disease_labels.pkl' 
-    TARGET_SIZE = (224, 224) 
-
-    try:
-        # --- 1. Load Class Labels and Get NUM_CLASSES ---
-        with open(labels_path, 'rb') as f:
-            class_labels = pickle.load(f)
-            
-        if isinstance(class_labels, dict):
-            NUM_CLASSES = len(class_labels)
-        else: # Handle list of class names if saved differently
-            NUM_CLASSES = len(class_labels)
-            class_labels = {i: label for i, label in enumerate(class_labels)}
-
-
-        # --- 2. Rebuild the Model Architecture (Exactly as in Notebook Cell 8) ---
-        
-        # 2.1 Set up Mixed Precision Policy if GPU is available (CRUCIAL for loading float16 weights)
-        gpus = tf.config.list_physical_devices('GPU')
-        if gpus:
-             keras.mixed_precision.set_global_policy('mixed_float16')
-        else:
-            keras.mixed_precision.set_global_policy('float32')
-
-        # 2.2 Recreate Base Model (Input shape (224, 224, 3))
-        base_model = MobileNetV2(
-            input_shape=(*TARGET_SIZE, 3),
-            include_top=False,
-            weights='imagenet' # Re-download weights for the base model
-        )
-        base_model.trainable = False 
-
-        # 2.3 Recreate Custom Classification Head (Matching Notebook Cell 8)
-        model = Sequential([
-            base_model,
-            GlobalAveragePooling2D(),
-            Dense(512, activation='relu', kernel_regularizer=l2(0.001)), 
-            Dropout(0.6), 
-            # Final output MUST use dtype='float32'
-            Dense(NUM_CLASSES, activation='softmax', dtype='float32') 
-        ])
-
-        # --- 3. Load Weights and Recompile ---
-        
-        # The problem is that model.load_weights(model_path) often fails 
-        # when the model was saved with mixed precision. 
-        # We must load the weights into the new structure.
-        
-        # NOTE: If your 'best_cnn.keras' file only contains weights (saved via model.save_weights),
-        # this will work. If it contains the full model (saved via model.save), 
-        # we will force Keras to load only the compatible weights.
-        
-        model.load_weights(model_path) 
-        
-        model.compile(
-            optimizer=keras.optimizers.Adam(learning_rate=1e-5), 
-            loss='categorical_crossentropy',
-            metrics=['accuracy']
-        )
-        
-        st.success("✅ CNN model successfully rebuilt and weights loaded! 🔬")
-
-        return model, class_labels
-
-    except Exception as e:
-        st.error(f"❌ Critical Error loading CNN model: {type(e).__name__} - {str(e)}")
-        st.warning("⚠️ The specific error points to an internal conflict during Keras model reconstruction. The only workaround is to ensure the code exactly matches the training architecture.")
-        
-        # Fallback to prevent crash
-        class_labels_fallback = {0: "Apple___healthy", 1: "Apple___scab"}
-        return None, class_labels_fallback
 @st.cache_data
 def load_fertilizer_data():
     """Create sample fertilizer dataset"""
@@ -1952,7 +1836,7 @@ def load_fertilizer_data():
     n_samples = 800
     
     data = {
-        'Temparature': np.random.uniform(10, 45, n_samples),
+        'Temperature': np.random.uniform(10, 45, n_samples),
         'Humidity': np.random.uniform(20, 95, n_samples),
         'Moisture': np.random.uniform(0, 100, n_samples),
         'Soil_Type': np.random.choice(['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], n_samples),
@@ -1984,7 +1868,7 @@ def train_crop_model():
         # Load the fitted LabelEncoder
         le = joblib.load(encoder_path)
         
-        # st.success("Pre-trained Pipeline (Scaler + XGBoost) and LabelEncoder Loaded Successfully! 🌱")
+        st.success("Pre-trained Pipeline (Scaler + XGBoost) and LabelEncoder Loaded Successfully! 🌱")
         return model_pipeline, le
 
     except FileNotFoundError:
@@ -2030,79 +1914,38 @@ def train_crop_model():
         pipeline_fallback.fit(X, y_encoded)
         
         return pipeline_fallback, le_fallback
-    
-
 @st.cache_resource
 def train_fertilizer_model():
-    """
-    Loads the pre-trained Pipeline (randpipe.pkl) and creates a LabelEncoder 
-    for fertilizer name decoding (as the encoder was not saved in the provided notebook).
-    """
-    pipeline_path = 'randpipe.pkl'
+    """Train fertilizer recommendation model"""
+    df = load_fertilizer_data()
     
-    # Define fallback classes for the LabelEncoder using the sample data
-    df_data = load_fertilizer_data()
+    le_soil = LabelEncoder()
+    le_crop = LabelEncoder()
     
-    # 1. Load the Pipeline (randpipe.pkl)
-    try:
-        with open(pipeline_path, 'rb') as f:
-            model_pipeline = pickle.load(f)
-        st.success("Pre-trained Fertilizer Pipeline Loaded Successfully! 🧪")
+    df['Soil_Encoded'] = le_soil.fit_transform(df['Soil_Type'])
+    df['Crop_Encoded'] = le_crop.fit_transform(df['Crop_Type'])
+    
+    X = df[['Temperature', 'Humidity', 'Moisture', 'Soil_Encoded', 
+            'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
+    y = df['Fertilizer_Name']
+    
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X, y)
+    
+    return model, le_soil, le_crop
 
-        # 2. Recreate LabelEncoder using the full set of labels from the sample data
-        # This assumes the sample data contains all possible output classes.
-        le_fertilizer = LabelEncoder()
-        # We need to fit the encoder on the entire original label set to ensure correct decoding
-        le_fertilizer.fit(df_data['Fertilizer_Name']) 
-        
-        # NOTE: The other two encoders (le_soil and le_crop) are technically not needed 
-        # in the calling function because the pipeline handles the encoding. 
-        # We return a placeholder for le_soil and le_crop as per the function signature.
-        le_soil_placeholder = LabelEncoder().fit(df_data['Soil_Type'])
-        le_crop_placeholder = LabelEncoder().fit(df_data['Crop_Type'])
-        
-        return model_pipeline, le_soil_placeholder, le_crop_placeholder, le_fertilizer
-
-    except FileNotFoundError:
-        st.error(f"Error: Required pipeline file ('{pipeline_path}') not found. Falling back to mock model training.")
-        
-        # --- Fallback: Train and return a mock model (original app logic) ---
-        le_soil_fallback = LabelEncoder()
-        le_crop_fallback = LabelEncoder()
-        le_fert_fallback = LabelEncoder()
-        
-        df_data['Soil_Encoded'] = le_soil_fallback.fit_transform(df_data['Soil_Type'])
-        df_data['Crop_Encoded'] = le_crop_fallback.fit_transform(df_data['Crop_Type'])
-        y_encoded = le_fert_fallback.fit_transform(df_data['Fertilizer_Name'])
-        
-        X = df_data[['Temparature', 'Humidity', 'Moisture', 'Soil_Encoded', 
-                     'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
-        
-        model_fallback = RandomForestClassifier(n_estimators=100, random_state=42)
-        model_fallback.fit(X, y_encoded)
-        
-        st.warning("Using mock RandomForestClassifier for demo purposes.")
-        return model_fallback, le_soil_fallback, le_crop_fallback, le_fert_fallback
+def predict_disease_from_image(image):
+    """Mock CNN disease prediction"""
+    diseases = [
+        "Healthy", "Apple Scab", "Black Rot", "Cedar Apple Rust",
+        "Bacterial Blight", "Early Blight", "Late Blight", "Leaf Mold",
+        "Septoria Leaf Spot", "Target Spot", "Mosaic Virus"
+    ]
     
-    except Exception as e:
-        st.error(f"Error loading model component '{pipeline_path}': {e}. Falling back to mock training.")
-        
-        # --- Fallback: Train and return a mock model (original app logic) ---
-        le_soil_fallback = LabelEncoder()
-        le_crop_fallback = LabelEncoder()
-        le_fert_fallback = LabelEncoder()
-        
-        df_data['Soil_Encoded'] = le_soil_fallback.fit_transform(df_data['Soil_Type'])
-        df_data['Crop_Encoded'] = le_crop_fallback.fit_transform(df_data['Crop_Type'])
-        y_encoded = le_fert_fallback.fit_transform(df_data['Fertilizer_Name'])
-        
-        X = df_data[['Temparature', 'Humidity', 'Moisture', 'Soil_Encoded', 
-                     'Crop_Encoded', 'Nitrogen', 'Potassium', 'Phosphorous']]
-        
-        model_fallback = RandomForestClassifier(n_estimators=100, random_state=42)
-        model_fallback.fit(X, y_encoded)
-        
-        return model_fallback, le_soil_fallback, le_crop_fallback, le_fert_fallback
+    predicted_disease = np.random.choice(diseases)
+    confidence = np.random.uniform(0.75, 0.98)
+    
+    return predicted_disease, confidence
 
 # Main App
 def main():
@@ -2157,8 +2000,8 @@ def main():
     # Navigation
     page = st.sidebar.selectbox(
         t['sidebar_title'],
-        [t['nav_home'], t['nav_crop'], t['nav_fertilizer'], t['nav_chat'],  
-        t['nav_disease'], t['nav_about']],
+        [t['nav_home'], t['nav_crop'], t['nav_fertilizer'],
+         t['nav_disease'], t['nav_about']],
         key='page_select'
     )
 
@@ -2173,8 +2016,6 @@ def main():
         show_disease_detection()
     elif page == t['nav_about']:
         show_about_page()
-    elif page == t['nav_chat']:
-        show_chatbot_page()
 
 
 def show_home_page():
@@ -2467,7 +2308,6 @@ def show_crop_prediction():
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-                
     
     .stButton > button {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -2900,534 +2740,194 @@ def show_crop_prediction():
         """, unsafe_allow_html=True)
     
 def show_fertilizer_recommendation():
-    """Display fertilizer recommendation page - MATCHING TRAINING PIPELINE"""
+    """Display fertilizer recommendation page"""
     t = translations[st.session_state.lang]
 
-    st.markdown(f"# 🧪 {t['fertilizer_recommendation']['main_title']}")
-    st.markdown(f"**{t['fertilizer_recommendation']['subtitle']}**")
+    st.markdown(f"# 🧪 {t['nav_fertilizer'].split(' ')[1]} {t['nav_fertilizer'].split(' ')[2]}")
+    st.markdown(f"Get optimal fertilizer suggestions based on your crop and soil conditions.") # This line needs to be translated
     
     col1, col2 = st.columns([1, 1])
     
-    # --- Input Fields ---
     with col1:
-        st.markdown(f"### {t['fertilizer_recommendation']['section_info']}")
-        
-        crop_type = st.selectbox(
-            t['fertilizer_recommendation']['crop_type_label'], 
+        st.markdown("### 🌱 Crop & Soil Information")
+        crop_type = st.selectbox("Crop Type", 
             ['Maize', 'Sugarcane', 'Cotton', 'Tobacco', 'Paddy', 
-             'Barley', 'Wheat', 'Millets', 'Oil seeds', 'Pulses', 'Ground Nuts'], 
-            key="crop_type"
-        )
-        soil_type = st.selectbox(
-            t['fertilizer_recommendation']['soil_type_label'], 
-            ['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], 
-            key="soil_type"
-        )
+             'Barley', 'Wheat', 'Millets', 'Oil seeds', 'Pulses', 'Ground Nuts'], key="crop_type")
+        soil_type = st.selectbox("Soil Type", ['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'], key="soil_type")
         
-        st.markdown(f"### {t['fertilizer_recommendation']['section_env']}") 
-        temp = st.slider(t['fertilizer_recommendation']['temp_label'], 10.0, 45.0, 25.0, key="fert_temp")
-        humidity_fert = st.slider(t['fertilizer_recommendation']['hum_label'], 20.0, 95.0, 50.0, key="fert_humidity")
-        moisture = st.slider(t['fertilizer_recommendation']['moisture_label'], 0.0, 100.0, 50.0, key="fert_moisture")
+        st.markdown("### 🌡️ Environmental Conditions")
+        temp = st.slider("Temperature (°C)", 10.0, 45.0, 25.0, key="fert_temp")
+        humidity_fert = st.slider("Humidity (%)", 20.0, 95.0, 50.0, key="fert_humidity")
+        moisture = st.slider("Soil Moisture (%)", 0.0, 100.0, 50.0, key="fert_moisture")
         
     with col2:
-        st.markdown(f"### {t['fertilizer_recommendation']['section_nutrients']}")
-        nitrogen_fert = st.slider(t['fertilizer_recommendation']['nitrogen_label'], 0, 50, 25, key="fert_nitrogen")
-        phosphorus_fert = st.slider(t['fertilizer_recommendation']['phosphorus_label'], 0, 50, 25, key="fert_phosphorus")
-        potassium_fert = st.slider(t['fertilizer_recommendation']['potassium_label'], 0, 50, 25, key="fert_potassium")
+        st.markdown("### 🧪 Current Soil Nutrients")
+        nitrogen_fert = st.slider("Nitrogen Content", 0, 50, 25, key="fert_nitrogen")
+        phosphorus_fert = st.slider("Phosphorus Content", 0, 50, 25, key="fert_phosphorus")
+        potassium_fert = st.slider("Potassium Content", 0, 50, 25, key="fert_potassium")
         
-        # Nutrient Status Metrics
-        st.markdown(f"### {t['fertilizer_recommendation']['nutrient_status_header']}")
+        st.markdown("### 📊 Nutrient Status")
         col2_1, col2_2, col2_3 = st.columns(3)
         
         def get_nutrient_status(value):
             if value < 15:
-                return t['fertilizer_recommendation']['low']
+                return "🔴 Low"
             elif value < 35:
-                return t['fertilizer_recommendation']['medium']
+                return "🟡 Medium"
             else:
-                return t['fertilizer_recommendation']['high']
+                return "🟢 High"
         
         with col2_1:
-            status = get_nutrient_status(nitrogen_fert)
-            st.metric(t['fertilizer_recommendation']['nitrogen_label'], f"{nitrogen_fert}", status.split(' ')[-1]) 
+            st.metric("Nitrogen", f"{nitrogen_fert}", get_nutrient_status(nitrogen_fert))
         with col2_2:
-            status = get_nutrient_status(phosphorus_fert)
-            st.metric(t['fertilizer_recommendation']['phosphorus_label'], f"{phosphorus_fert}", status.split(' ')[-1])
+            st.metric("Phosphorus", f"{phosphorus_fert}", get_nutrient_status(phosphorus_fert))
         with col2_3:
-            status = get_nutrient_status(potassium_fert)
-            st.metric(t['fertilizer_recommendation']['potassium_label'], f"{potassium_fert}", status.split(' ')[-1])
-            
-    # Prediction Button
-    if st.button(t['fertilizer_recommendation']['predict_button'], type="primary", key="get_fert_rec"):
+            st.metric("Potassium", f"{potassium_fert}", get_nutrient_status(potassium_fert))
+    
+    if st.button("💡 Get Fertilizer Recommendation", type="primary", key="get_fert_rec"):
+        model, le_soil, le_crop = train_fertilizer_model()
         
         try:
-            # Load the pipeline (which contains the preprocessor)
-            pipeline_path = 'randpipe.pkl'
-            with open(pipeline_path, 'rb') as f:
-                randpipe = pickle.load(f)
+            soil_encoded = le_soil.transform([soil_type])[0]
+            crop_encoded = le_crop.transform([crop_type])[0]
             
-            # Load the fertilizer label encoder
-            encoder_path = 'fert_label_encoder.pkl'
-            with open(encoder_path, 'rb') as f:
-                le_fertilizer = pickle.load(f)
+            input_data = np.array([[temp, humidity_fert, moisture, soil_encoded, 
+                                     crop_encoded, nitrogen_fert, potassium_fert, phosphorus_fert]])
+            prediction = model.predict(input_data)[0]
+            probabilities = model.predict_proba(input_data)[0]
+            confidence = max(probabilities) * 100
             
-            # ✅ Create input DataFrame with EXACT column names and order from training
-            # This is CRITICAL - must match training data exactly
-            input_df = pd.DataFrame({
-                'Temparature': [float(temp)],           # Note: Typo "Temparature" is intentional
-                'Humidity': [float(humidity_fert)],
-                'Moisture': [float(moisture)],
-                'Soil Type': [soil_type],               # OneHotEncoder will handle this
-                'Crop Type': [crop_type],               # OneHotEncoder will handle this
-                'Nitrogen': [int(nitrogen_fert)],
-                'Potassium': [int(potassium_fert)],
-                'Phosphorous': [int(phosphorus_fert)]   # Note: American spelling
-            })
-            
-            # ✅ The pipeline preprocessor (with OneHotEncoder) will handle categorical encoding
-            # Make prediction - let the pipeline's preprocessor do the encoding
-            prediction_encoded = randpipe.predict(input_df)[0]
-            probabilities = randpipe.predict_proba(input_df)[0]
-            
-            # Decode the prediction using the fertilizer label encoder
-            prediction = le_fertilizer.inverse_transform([int(prediction_encoded)])[0]
-            confidence = probabilities[int(prediction_encoded)] * 100
-            
-            # Display Results
             st.markdown(f"""
             <div class="prediction-result">
-                🎯 {t['fertilizer_recommendation']['result_header']} <strong>{prediction}</strong><br>
-                📊 {t['fertilizer_recommendation']['result_confidence']} <strong>{confidence:.1f}%</strong>
+                🎯 Recommended Fertilizer: <strong>{prediction}</strong><br>
+                📊 Confidence: <strong>{confidence:.1f}%</strong>
             </div>
             """, unsafe_allow_html=True)
             
-            # Display usage tips
-            st.success(f"""
-**✅ Fertilizer Recommendation for {crop_type}**
-
-**Recommended Fertilizer:** {prediction}
-
-**Applied to:** {soil_type} soil
-
-**Tips:**
-- Consider current nutrient levels when determining quantity
-- Apply during the appropriate growth stage
-- Monitor soil moisture and weather conditions
-- Retest soil after 2-3 months for optimal results
+            st.info(f"""
+            **For {crop_type} in {soil_type} soil:**
+            - Apply **{prediction}** fertilizer
+            - Consider current nutrient levels when determining quantity
+            - Apply during appropriate growth stage
+            - Monitor soil moisture and weather conditions
             """)
-            
-            # Show confidence level
-            if confidence > 80:
-                st.info(f"🎯 **High Confidence** ({confidence:.1f}%) - This recommendation is well-matched to your conditions")
-            elif confidence > 60:
-                st.info(f"📊 **Good Confidence** ({confidence:.1f}%) - This recommendation should work well")
-            else:
-                st.warning(f"⚠️ **Moderate Confidence** ({confidence:.1f}%) - Consider consulting with an agronomist")
-            
-        except FileNotFoundError as e:
-            st.error(f"❌ Model file not found!")
-            st.warning("""
-            Please ensure these files are in the app directory:
-            - `randpipe.pkl` (trained pipeline with preprocessor)
-            - `fert_label_encoder.pkl` (fertilizer encoder)
-            """)
-            
-        except Exception as e:
-            st.error(f"❌ Error during prediction: {type(e).__name__}")
-            st.write(f"**Details:** {str(e)}")
-            
-            # Debug info
-            with st.expander("Debug Information"):
-                st.write("Input DataFrame:")
-                st.write(input_df)
-                st.write(f"Input columns: {list(input_df.columns)}")
-                import traceback
-                st.write(traceback.format_exc())
+        except ValueError:
+            st.error("Error in prediction. Please check your inputs.")
 
-
-# C:\Users\user\OneDrive\Desktop\new\ferti.py
-
-def predict_disease_from_image(image):
-    """Enhanced image preprocessing and prediction"""
-    cnn_model, class_labels = load_cnn_model_and_labels()
-    t = translations.get(st.session_state.get('lang', 'en'), translations['en'])
-    
-    if cnn_model is None:
-        st.warning("⚠️ Using fallback prediction mode")
-        return "Healthy", 95.0
-    
-    try:
-        import tensorflow as tf
-        
-        # TARGET SIZE - Match your training size
-        target_size = (224, 224)  # Adjust if your model uses different size
-        
-        # Convert to RGB if needed
-        if image.mode != 'RGB':
-            image = image.convert('RGB')
-        
-        # Resize image
-        processed_image = image.resize(target_size, Image.LANCZOS)
-        
-        # Convert to array
-        img_array = np.array(processed_image)
-        
-        # CRITICAL: Match training preprocessing
-        # Option 1: If trained with ImageDataGenerator with rescale=1./255
-        img_array = img_array.astype('float32') / 255.0
-        
-        # Option 2: If trained with tf.keras.applications preprocessing
-        # from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-        # img_array = preprocess_input(img_array)
-        
-        # Add batch dimension
-        img_array = np.expand_dims(img_array, axis=0)
-        
-        # Ensure correct dtype (important for mixed precision)
-        img_array = tf.cast(img_array, tf.float32)
-        
-        # Make prediction
-        predictions = cnn_model.predict(img_array, verbose=0)
-        
-        # Get results
-        predicted_index = int(np.argmax(predictions[0]))
-        confidence = float(np.max(predictions[0]) * 100)
-        
-        # Get disease name
-        predicted_disease_en = class_labels.get(predicted_index, "Unknown Disease")
-        
-        # Clean disease name
-        if "___" in predicted_disease_en:
-            plant_name, disease_name = predicted_disease_en.split("___")
-            predicted_disease_en = disease_name.replace("_", " ").title()
-        
-        # Get translation
-        disease_names = t.get('disease_detection', {}).get('disease_names', {})
-        translated_disease = disease_names.get(predicted_disease_en, predicted_disease_en)
-        
-        return translated_disease, confidence
-        
-    except Exception as e:
-        st.error(f"❌ Prediction error: {str(e)}")
-        import traceback
-        with st.expander("Error Details"):
-            st.code(traceback.format_exc())
-        return "Error", 0.0
-    
-
-    2
-def mock_gemini_api_call(user_prompt, system_prompt, model_name="gemini-2.5-flash-preview-09-2025"):
-    """
-    Mocks the API call to the Gemini generateContent endpoint.
-    In a real environment, replace this with actual HTTP logic using libraries like 'requests' or 'httpx'.
-    """
-    
-    # 1. Configuration (Set API Key and Endpoint)
-    # The API key is assumed to be handled by the execution environment or retrieved securely.
-    api_key = "AIzaSyAr9UV0NfkoEkuoo8I74rXABuWIaDmP9V8" # Leave empty as instructed.
-    api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-    
-    # 2. Payload Construction
-    payload = {
-        "contents": [{"parts": [{"text": user_prompt}]}],
-        "tools": [{"google_search": {}}],  # Enable Google Search Grounding for current information
-        "systemInstruction": {
-            "parts": [{
-                "text": system_prompt
-            }]
-        },
-    }
-
-    # --- Simulated API Response ---
-    # For demonstration, we simulate the structure of a successful API response.
-    time.sleep(2) # Simulate network latency
-
-    if "rice irrigation" in user_prompt.lower():
-        mock_text = "Rice requires significant water, usually flooded fields (paddy system) from planting until about two weeks before harvest. The water depth should generally be maintained at 5-10 cm to suppress weeds and regulate temperature. Use the System of Rice Intensification (SRI) method for better yield and water efficiency, which involves intermittent wetting and drying."
-        sources = [
-            {"uri": "https://source.example/rice-farming", "title": "Rice Farming Techniques"},
-            {"uri": "https://source.example/sri-method", "title": "SRI Method Explained"}
-        ]
-    elif "soil ph" in user_prompt.lower():
-        mock_text = "Soil pH measures acidity or alkalinity. Most crops prefer a neutral range (6.0 to 7.5). If your soil is too acidic (below 6.0), you can add agricultural lime to raise the pH. If it's too alkaline (above 7.5), sulfur or gypsum can be added to lower it."
-        sources = [{"uri": "https://source.example/soil-ph", "title": "Soil pH Management"}]
-    else:
-        # Fallback response simulating general LLM output
-        mock_text = f"I am ready to help you research {user_prompt.lower()}. Generally, ensure you follow local agricultural guidelines for the best results."
-        sources = []
-
-
-    # 3. Process Response
-    
-    # Format citations if they exist
-    citation_text = ""
-    if sources:
-        citation_text = "\n\n**Sources:**"
-        for i, source in enumerate(sources):
-            citation_text += f'\n[{i+1}] [{source["title"]}]({source["uri"]})'
-    
-    return mock_text + citation_text
-
-# --- Gemini API Call Wrapper ---
-
-def get_ai_response(prompt):
-    """
-    Function to get AI response from Gemini API with Google Search grounding
-    """
-    t = translations.get(st.session_state.get('lang', 'en'), translations['en'])
-    
-    # Get API key from Streamlit secrets or environment variable
-    # For production, use: st.secrets["GEMINI_API_KEY"]
-    api_key = "AIzaSyAr9UV0NfkoEkuoo8I74rXABuWIaDmP9V8"  # Replace with secure method
-    
-    if not api_key:
-        return t['chatbot_page'].get('error', "API key not configured. Please contact support.")
-    
-    model_name = "gemini-2.0-flash-exp"
-    api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-    
-    # System prompt for agricultural assistant
-    system_prompt = (
-    "You are DeepChat, an AI assistant for the DeepAgro smart agriculture platform. "
-    "Your PRIMARY expertise is agriculture, farming, crop science, soil health, "
-    "pest management, irrigation, and yield optimization. "
-    "\n\n**CORE DIRECTIVES:**"
-    "\n\n1. **Detail and Depth:** When users ask agriculture-related questions, provide "
-    "**detailed, comprehensive, and practical advice**. Answers should be thorough, "
-    "well-structured, and written in simple, actionable language for farmers."
-    "\n\n2. **Language Flexibility:** You are capable of communicating and providing "
-    "detailed answers in **any language the user requests**. If the user's initial "
-    "message is in a specific language, respond in that language unless otherwise instructed."
-    "\n\n3. **Source Integration (Knowledge Requirement):** To ensure accuracy and "
-    "provide detailed context, you are equipped with and **must use a search tool (Google)** "
-    "to find and integrate the latest, most reliable, and detailed information into "
-    "your agricultural advice. Always provide a synthesized, practical answer, not just a list of sources."
-    "\n\n4. **Scope Management:** You can answer general questions, but always try "
-    "to relate answers back to agriculture when relevant. If a question is completely "
-    "unrelated to farming, provide a brief, helpful answer but gently remind users "
-    "that you specialize in agricultural assistance."
-    "\n\nBe friendly, professional, and concise."
-)
-    
-    # Construct payload
-    payload = {
-        "contents": [{
-            "parts": [{"text": f"{system_prompt}\n\nUser Question: {prompt}"}]
-        }],
-        "tools": [{"google_search": {}}],  # Enable Google Search for current information
-        "generationConfig": {
-            "temperature": 0.7,
-            "topK": 40,
-            "topP": 0.95,
-            "maxOutputTokens": 1024,
-        }
-    }
-    
-    try:
-        # Make API request
-        headers = {"Content-Type": "application/json"}
-        response = requests.post(api_url, headers=headers, json=payload, timeout=30)
-        response.raise_for_status()
-        
-        # Parse response
-        result = response.json()
-        
-        if "candidates" in result and len(result["candidates"]) > 0:
-            candidate = result["candidates"][0]
-            
-            # Extract text content
-            if "content" in candidate and "parts" in candidate["content"]:
-                response_text = candidate["content"]["parts"][0].get("text", "")
-                
-                # Extract grounding metadata (sources) if available
-                citation_text = ""
-                if "groundingMetadata" in candidate:
-                    grounding = candidate["groundingMetadata"]
-                    if "groundingChunks" in grounding and grounding["groundingChunks"]:
-                        citation_text = "\n\n**Sources:**"
-                        for i, chunk in enumerate(grounding["groundingChunks"][:3]):  # Limit to 3 sources
-                            if "web" in chunk:
-                                web_info = chunk["web"]
-                                title = web_info.get("title", "Source")
-                                uri = web_info.get("uri", "#")
-                                citation_text += f'\n[{i+1}] [{title}]({uri})'
-                
-                return response_text + citation_text
-            
-        # Fallback if no valid response
-        return t['chatbot_page'].get('error', "I couldn't generate a response. Please try rephrasing your question.")
-        
-    except requests.exceptions.Timeout:
-        return "Request timed out. Please try again."
-    except requests.exceptions.RequestException as e:
-        error_msg = t['chatbot_page'].get('error', "Sorry, I encountered an error.")
-        return f"{error_msg} (Network Error)"
-    except json.JSONDecodeError:
-        return "Invalid response from server. Please try again."
-    except Exception as e:
-        error_msg = t['chatbot_page'].get('error', "Sorry, I encountered an error.")
-        return f"{error_msg} ({type(e).__name__})"
-
-
-def show_chatbot_page():
-    """Display chatbot interface"""
-    t = translations[st.session_state.lang]
-
-    # Initialize chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": t['chatbot_page']['initial_message']}
-        ]
-
-    st.markdown(f'<h1 class="main-title">{t["chatbot_page"]["main_title"]}</h1>', unsafe_allow_html=True)
-    st.markdown(f'<p class="subtitle">{t["chatbot_page"]["subtitle"]}</p>', unsafe_allow_html=True)
-    st.markdown("---")
-
-    # Display chat messages
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Chat input
-    if prompt := st.chat_input(t['chatbot_page']['user_placeholder']):
-        # Add user message
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        # Get AI response
-        with st.chat_message("assistant"):
-            with st.spinner(t['chatbot_page']['loading']):
-                response = get_ai_response(prompt)
-                st.markdown(response)
-        
-        # Add assistant message to history
-        st.session_state.messages.append({"role": "assistant", "content": response})
 def show_disease_detection():
     t = translations[st.session_state.lang]
     
+    # Titles and Guidelines (Keeping the original structure)
     st.markdown(f"# 🔬 {t['disease_detection']['main_title']}")
     st.markdown(f"{t['disease_detection']['subtitle']}")
-    
+    st.markdown(f"### {t['disease_detection']['upload_header']}")
     st.markdown(f"""
     <div class="upload-section">
         <h4>{t['disease_detection']['upload_guidelines_title']}</h4>
-        {t['disease_detection']['upload_guidelines_text']}
+        <div style="text-align: left; display: inline-block;">
+            {t['disease_detection']['upload_guidelines_text']}
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
+    # File Uploader
     uploaded_file = st.file_uploader(
         t['disease_detection']['file_uploader_label'],
         type=['jpg', 'jpeg', 'png'],
         help=t['disease_detection']['file_uploader_help']
     )
     
+    # Define image and result column placeholders
+    img_col, result_col = st.columns([1, 1])
+    image_placeholder = img_col.empty()
+    result_placeholder = result_col.empty() # Placeholder for the initial button/spinner
+    
     if uploaded_file is not None:
-        try:
-            # Load image
-            image = Image.open(uploaded_file)
-            
-            # Display original image
-            st.image(image, caption=t['disease_detection']['uploaded_image_caption'], 
-                    use_container_width=True)
-            
-            # Analyze button
-            if st.button(t['disease_detection']['analyze_button'], 
-                        type="primary", use_container_width=True):
-                
-                # Create progress bar
-                progress_bar = st.progress(0)
-                status_text = st.empty()
-                
-                for i in range(100):
-                    time.sleep(0.02)
-                    progress_bar.progress(i + 1)
-                    if i < 30:
-                        status_text.text("📷 Processing image...")
-                    elif i < 60:
-                        status_text.text("🧠 Analyzing with AI...")
-                    else:
-                        status_text.text("🔍 Identifying disease...")
-                
-                progress_bar.empty()
-                status_text.empty()
-                
-                # Get prediction
-                predicted_disease, confidence = predict_disease_from_image(image)
-                
-                # Display results with enhanced styling
-                if predicted_disease.lower() != "error":
-                    st.success(t['disease_detection']['analysis_complete'])
-                    
-                    # Color-coded result based on confidence
-                    color = "#4CAF50" if confidence > 80 else "#FF9800" if confidence > 60 else "#F44336"
-                    
-                    st.markdown(f"""
-                    <div style="background: linear-gradient(135deg, {color}, {color}dd); 
-                                padding: 2rem; border-radius: 15px; color: white; 
-                                text-align: center; margin: 1rem 0;">
-                        <h2 style="color: white; margin: 0;">
-                            🎯 {t['disease_detection']['result_header']}
-                        </h2>
-                        <h1 style="color: white; margin: 1rem 0; font-size: 2.5rem;">
-                            {predicted_disease}
-                        </h1>
-                        <p style="color: white; font-size: 1.3rem; margin: 0;">
-                            📊 {t['disease_detection']['result_confidence']} {confidence:.1f}%
-                        </p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Show appropriate message
-                    if "healthy" in predicted_disease.lower():
-                        st.balloons()
-                        st.success(t['disease_detection']['healthy_message'])
-                    else:
-                        st.warning(t['disease_detection']['disease_warning'])
-                        
-                        # Add recommendations section
-                        with st.expander("💡 Recommended Actions"):
-                            st.markdown("""
-                            - Isolate affected plants
-                            - Remove infected leaves
-                            - Apply appropriate fungicide/pesticide
-                            - Improve air circulation
-                            - Monitor other plants
-                            - Consult agricultural expert for severe cases
-                            """)
+        image = Image.open(uploaded_file)
         
-        except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
-            with st.expander("Debug Info"):
-                import traceback
-                st.code(traceback.format_exc())
+        # Display static image initially
+        image_placeholder.image(image, caption=t['disease_detection']['uploaded_image_caption'], use_container_width=True)
+        
+        with result_placeholder.container():
+            if st.button(t['disease_detection']['analyze_button'], type="primary", use_container_width=True):
+                
+                # --- PREPARE BASE64 DATA URI ---
+                buffered = io.BytesIO()
+                # Use uploaded format or default to PNG
+                format_type = image.format if image.format in ['JPEG', 'PNG'] else 'PNG'
+                image.save(buffered, format=format_type)
+                img_str = base64.b64encode(buffered.getvalue()).decode()
+                
+                # 1. Start Status Spinner (AI is analyzing)
+                with st.status(t['disease_detection']['loading_message'], expanded=True) as status:
+                    
+                    # 2. Inject image with Base64 URI and CSS animation classes
+                    image_placeholder.markdown(
+                        f"""
+                        <div class="diagnosing-container" style="text-align: center;">
+                            <img src="data:image/{format_type.lower()};base64,{img_str}" 
+                                 class="zooming-image" 
+                                 style="width:100%; max-width:100%; height:auto; border-radius: 5px;"> 
+                        </div>
+                        <p style="text-align: center; font-style: italic;">{t['disease_detection']['uploaded_image_caption']}</p>
+                        """, 
+                        unsafe_allow_html=True
+                    )
+                    
+                    # 3. Hold time to allow the 3.0s animation to run
+                    time.sleep(4) 
+                    
+                    # 4. Get Prediction and update status
+                    predicted_disease, confidence = predict_disease_from_image(image)
+                    status.update(label=t['disease_detection']['analysis_complete'], state="complete", expanded=False)
+
+                # 5. Restore normal Streamlit image display (removes the HTML animated version)
+                image_placeholder.image(image, caption=t['disease_detection']['uploaded_image_caption'], use_container_width=True)
+                
+                # --- DISPLAY RESULTS ---
+                st.markdown(f"""
+                <div class="prediction-result">
+                    🎯 {t['disease_detection']['result_header']} <strong>{predicted_disease}</strong><br>
+                    📊 {t['disease_detection']['result_confidence']} <strong>{confidence:.1f}%</strong>
+                </div>
+                """, unsafe_allow_html=True)
+
+                if predicted_disease != "Healthy":
+                    st.error(t['disease_detection']['disease_warning'])
+                else:
+                    st.balloons()
+                    st.success(t['disease_detection']['healthy_message'])
+
+    # Clear placeholders when no file is selected
     else:
-        st.info("📤 Please upload a leaf image to start analysis.")
+        image_placeholder.empty()
+        result_placeholder.empty()
 
 def show_about_page():
     """Display about page with team information"""
     t = translations[st.session_state.lang]
 
-    st.markdown(f"# {t['about_page']['main_title']}")
-    st.markdown(f"**{t['about_page']['subtitle']}**")
+    st.markdown(f"# 👥 {t['nav_about'].split(' ')[1]} {t['nav_about'].split(' ')[2]}") # Needs translation
+    st.markdown("Meet the innovative team behind the smart agriculture revolution!") # Needs translation
     
-    st.markdown(f"""
+    st.markdown("""
     <div class="feature-card">
-        <h4>{t['about_page']['mission_title']}</h4>
-        <p>{t['about_page']['mission_text']}</p>
+        <h4>🌟 Our Mission</h4>
+        <p>DeepAgro is dedicated to transforming traditional agriculture through cutting-edge AI and Machine Learning technologies. 
+        Our goal is to empower farmers with intelligent insights for better crop selection, optimal fertilizer usage, and early disease detection.</p>
     </div>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True) # Needs translation
     
     st.markdown("---")
     
-    st.markdown(f"""
+    st.markdown("""
     <div style="text-align: center; padding: 2rem 0;">
-        <h2 style="color: #1b5e20; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">{t['about_page']['team_header']}</h2>
+        <h2 style="color: #1b5e20; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">👨‍💻 Our Development Team</h2>
         <p style="color: #2e7d32; font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
-            {t['about_page']['team_desc']}
+            A passionate group of students from IIIT Raichur working together to revolutionize agriculture with technology.
         </p>
     </div>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True) # Needs translation
     
     team_members = [
         {"name": "Aditya Upendra Gupta", "roll": "AD24B1003", "branch": "Artificial Intelligence (AI) and Data Science (DS)"},
@@ -3453,80 +2953,94 @@ def show_about_page():
     
     st.markdown("---")
     
-    st.markdown(f"## {t['about_page']['tech_stack_header']}")
+    st.markdown("## 🛠️ Technology Stack") # Needs translation
     
     tech_col1, tech_col2, tech_col3 = st.columns(3)
     
     with tech_col1:
-        st.markdown(f"""
+        st.markdown("""
         <div class="feature-card">
-            <h4>{t['about_page']['ml_title']}</h4>
-            <p>{t['about_page']['ml_text']}</p>
+            <h4>🤖 Machine Learning</h4>
+            <p>• Random Forest Classifier<br>
+            • Scikit-learn<br>
+            • NumPy & Pandas<br>
+            • Feature Engineering</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # Needs translation
     
     with tech_col2:
-        st.markdown(f"""
+        st.markdown("""
         <div class="feature-card">
-            <h4>{t['about_page']['web_title']}</h4>
-            <p>{t['about_page']['web_text']}</p>
+            <h4>🌐 Web Framework</h4>
+            <p>• Streamlit<br>
+            • Python Backend<br>
+            • Interactive UI/UX<br>
+            • Real-time Processing</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # Needs translation
     
     with tech_col3:
-        st.markdown(f"""
+        st.markdown("""
         <div class="feature-card">
-            <h4>{t['about_page']['data_title']}</h4>
-            <p>{t['about_page']['data_text']}</p>
+            <h4>📊 Data & Visualization</h4>
+            <p>• Plotly for Charts<br>
+            • PIL for Image Processing<br>
+            • Custom CSS Styling<br>
+            • Responsive Design</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # Needs translation
     
-    st.markdown(f"## {t['about_page']['features_header']}")
+    st.markdown("## ✨ Key Features") # Needs translation
     
     feature_col1, feature_col2 = st.columns(2)
     
     with feature_col1:
-        st.markdown(f"""
-        ### {t['about_page']['smart_pred_header']}
-        {t['about_page']['smart_pred_list']}
-        """)
+        st.markdown("""
+        ### 🎯 Smart Predictions
+        - **Crop Recommendation:** AI-powered crop selection based on soil and climate conditions
+        - **Fertilizer Optimization:** Intelligent fertilizer recommendations for maximum yield
+        - **Disease Detection:** Computer vision for plant disease identification
+        """) # Needs translation
     
     with feature_col2:
-        st.markdown(f"""
-        ### {t['about_page']['ux_header']}
-        {t['about_page']['ux_list']}
-        """)
+        st.markdown("""
+        ### 🔧 User Experience
+        - **Interactive Interface:** Easy-to-use sliders and input fields
+        - **Real-time Analysis:** Instant predictions and recommendations
+        - **Educational Content:** Detailed explanations and farming tips
+        """) # Needs translation
     
     st.markdown("---")
     
     contact_col1, contact_col2 = st.columns(2)
     
     with contact_col1:
-        st.markdown(f"""
+        st.markdown("""
         <div class="feature-card">
-            <h4>{t['about_page']['institution_title']}</h4>
-            <p>{t['about_page']['institution_text']}</p>
+            <h4>🏫 Institution</h4>
+            <p><strong>Indian Institute of Information Technology, Raichur</strong><br>
+            Innovation in agricultural technology and sustainable farming solutions.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # Needs translation
     
     with contact_col2:
-        st.markdown(f"""
+        st.markdown("""
         <div class="feature-card">
-            <h4>{t['about_page']['acknowledgements_title']}</h4>
-            <p>{t['about_page']['acknowledgements_text']}</p>
+            <h4>🙏 Acknowledgments</h4>
+            <p>Special thanks to our faculty advisors Dr.Priodyuti Pradhan and the IIIT Raichur community for their support and guidance in developing this agricultural AI solution.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # Needs translation
     
-    st.markdown(f"""
+    st.markdown("""
     <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #e8f5e8, #f1f8e9); border-radius: 15px; margin: 2rem 0;">
         <p style="margin: 0; color: #1b5e20; font-size: 1.1rem; font-weight: 600;">
-            {t['about_page']['footer_title']} - {t['about_page']['footer_slogan']}
+            🌱 <strong>DeepAgro</strong> - Empowering Agriculture with AI & ML
         </p>
         <p style="margin: 0.5rem 0 0 0; color: #2e7d32; font-size: 0.95rem;">
-            {t['about_page']['footer_credit']}
+            Built with ❤️ by Team DeepAgro | IIIT Raichur | 2025
         </p>
     </div>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True) # Needs translation
 
 # Call the main function to run the app
 if __name__ == "__main__":

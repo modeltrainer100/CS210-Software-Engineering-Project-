@@ -17,7 +17,6 @@ import pickle
 import joblib
 import requests
 import json
-import numpy
 from sklearn.compose import ColumnTransformer
 translations = {
   "en": {
@@ -200,7 +199,7 @@ translations = {
       "team_desc": "A passionate group of students from IIIT Raichur working together to revolutionize agriculture with technology.",
       "tech_stack_header": "🛠️ Technology Stack",
       "ml_title": "🤖 Machine Learning",
-      "ml_text": "• XGBOOSTr<br>• Scikit-learn<br>• CNN <br>• Feature Engineering",
+      "ml_text": "• Random Forest Classifier<br>• Scikit-learn<br>• NumPy & Pandas<br>• Feature Engineering",
       "web_title": "🌐 Web Framework",
       "web_text": "• Streamlit<br>• Python Backend<br>• Interactive UI/UX<br>• Real-time Processing",
       "data_title": "📊 Data & Visualization",
@@ -1984,7 +1983,7 @@ def train_crop_model():
         # Load the fitted LabelEncoder
         le = joblib.load(encoder_path)
         
-        # st.success("Pre-trained Pipeline (Scaler + XGBoost) and LabelEncoder Loaded Successfully! 🌱")
+        st.success("Pre-trained Pipeline (Scaler + XGBoost) and LabelEncoder Loaded Successfully! 🌱")
         return model_pipeline, le
 
     except FileNotFoundError:
@@ -2467,7 +2466,6 @@ def show_crop_prediction():
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-                
     
     .stButton > button {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
